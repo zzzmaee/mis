@@ -1,0 +1,22 @@
+.@{progress-prefix-cls} {
+  & > div {
+    display: flex;
+  }
+
+  &-outer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .@{progress-prefix-cls}-show-info & {
+      margin-right: 0;
+      padding-right: 0;
+    }
+  }
+
+  &-text {
+    width: 3em;
+    flex: 0 0 auto;
+    text-align: end;
+  }
+}

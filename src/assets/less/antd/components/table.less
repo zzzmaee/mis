@@ -1,0 +1,31 @@
+@table-border-color: @neutral-3;
+
+.@{table-prefix-cls} {
+  table {
+    text-align: start;
+  }
+
+  &-thead {
+    > tr {
+      > th {
+        text-align: start;
+      }
+    }
+    > td {
+      width: 0;
+    }
+  }
+
+  &-thead {
+    > tr {
+      > th {
+        font-weight: 600;
+        text-align: start;
+
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+}

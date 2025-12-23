@@ -1,0 +1,19 @@
+.app-version {
+  display: flex;
+  flex-direction: column;
+  padding-inline-start: 8px;
+  line-height: 1.25;
+
+  &__title {
+    font-weight: 600;
+  }
+
+  &__value {
+    color: var(--color-text-secondary);
+    text-align: right;
+  }
+}
+
+:host ::ng-deep .ant-tabs-top>.ant-tabs-nav:before {
+  display: none;
+}

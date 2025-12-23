@@ -1,0 +1,107 @@
+<nz-layout>
+  <nz-sider [nzCollapsed]="isMenuCollapsed()" [nzCollapsedWidth]="56" nzWidth="220px">
+    <div class="sider-header">
+      <img src="assets/images/logo-icon.svg" alt="Yurt logo">
+      <button
+        nz-button
+        nzType="text"
+        type="button"
+        class="sider-header-collapse"
+        (click)="isMenuCollapsed.set(!isMenuCollapsed())"
+        nz-tooltip
+        [nzTooltipTitle]="
+          isMenuCollapsed() ? ('SIDEBAR.MENU.EXPAND_SIDEBAR' | translate) : ('SIDEBAR.MENU.COLLAPSE_SIDEBAR' | translate)
+        "
+        [nzTooltipMouseLeaveDelay]="-1"
+      >
+        <nz-icon nzType="nz:sidebar-simple" style="font-size: 18px"/>
+      </button>
+    </div>
+    <div class="sider-body">
+      <ul nz-menu class="sider-menu" nzMode="inline">
+        @for (item of menuConfig.menuItems; track item) {
+          @if (!item.children && item.path) {
+            <li
+              nz-menu-item
+              nzMatchRouter="true"
+              [nzPaddingLeft]="isMenuCollapsed() ? 11 : 16"
+              nz-tooltip
+              nzTooltipPlacement="right"
+              [nzTooltipTitle]="isMenuCollapsed() ? (item.titleKey | translate) : null"
+            >
+              @if (item.icon) {
+                <nz-icon [nzType]="item.icon"></nz-icon>
+              }
+              <span>
+                <a [routerLink]="['', item.path]">
+                  {{ item.titleKey | translate }}
+                </a>
+              </span>
+            </li>
+          } @else if (item.children) {
+            <li
+              nz-submenu
+              [nzPaddingLeft]="isMenuCollapsed() ? 11 : 16"
+              [nzTitle]="item.titleKey | translate"
+              [nzIcon]="item.icon || null"
+            >
+              <nz-icon nzType="nz:caret-down" class="caret-down"></nz-icon>
+              <ul class="ant-menu-sub-2">
+                @for (child of item.children; track child) {
+                  @if (child.path) {
+                    <li nz-menu-item nzMatchRouter="true">
+                      <span>
+                        <a [routerLink]="['', child.path]">
+                          {{ child.titleKey | translate }}
+                        </a>
+                      </span>
+                    </li>
+                  }
+                }
+              </ul>
+            </li>
+          }
+        }
+      </ul>
+    </div>
+    <div class="sider-footer">
+      <ul
+        nz-menu
+        class="sider-menu"
+        nzMode="inline"
+        [nzSelectable]="false"
+        [class.ant-menu-inline-collapsed]="isMenuCollapsed()"
+      >
+        <li
+          nz-menu-item
+          [nzPaddingLeft]="isMenuCollapsed() ? 11 : 16"
+          nz-tooltip
+          nzTooltipPlacement="right"
+          [nzTooltipTitle]="isMenuCollapsed() ? ('SIDEBAR.MENU.LOGOUT' | translate) : null"
+        >
+          <button class="ant-menu-button" type="button" (click)="logout()">
+            <nz-icon nzType="nz:sign-out"></nz-icon>
+            <span>
+              {{ 'SIDEBAR.MENU.LOGOUT' | translate }}
+            </span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <h1>
+        {{ getActiveTitleKey() | translate }}
+      </h1>
+      <app-language-switcher/>
+    </nz-header>
+    <nz-content>
+      <div class="content-container">
+        <main>
+          <router-outlet></router-outlet>
+        </main>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

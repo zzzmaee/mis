@@ -1,0 +1,118 @@
+{
+  "AUTH": {
+    "LOGIN": "Кіру",
+    "FORM": {
+      "USERNAME": {
+        "PLACEHOLDER": "Пайдаланушы аты",
+        "ERROR": "Пайдаланушы атын енгізіңіз"
+      },
+      "PASSWORD": {
+        "PLACEHOLDER": "Құпия сөз",
+        "ERROR": "Құпия сөзді енгізіңіз"
+      }
+    },
+    "NOTIFICATIONS": {
+      "SUCCESS": "Жүйеге сәтті кірілді",
+      "ERROR": "Кіру қатесі. Пайдаланушы аты мен құпия сөзді тексеріңіз"
+    }
+  },
+  "SIDEBAR": {
+    "MENU": {
+      "PROFILE": "Профиль",
+      "REPORTS": "Есептеме",
+      "USERS": "Пайдаланушылар",
+      "LOGS": "Журналдар",
+      "LOGOUT": "Шығу",
+      "EXPAND_SIDEBAR": "Бүйір панельді кеңейту",
+      "COLLAPSE_SIDEBAR": "Бүйір панельді жию"
+    }
+  },
+  "USERS": {
+    "ADD_USER": "Пайдаланушы қосу",
+    "EDIT_USER": "Пайдаланушыны өңдеу",
+    "LOAD_ERROR": "Пайдаланушыларды жүктеу қатесі: {{message}}",
+    "TABLE": {
+      "USERNAME": "Пайдаланушы аты",
+      "FULL_NAME": "Толық аты",
+      "ROLE": "Рөл",
+      "ACTION": "Әрекеттер",
+      "NO_ROLES": "Рөлдер жоқ"
+    },
+    "ROLES": {
+      "SUPERADMIN": "Супер әкімші",
+      "ADMIN": "Әкімші",
+      "INSPECTOR": "Тексеруші",
+      "USER": "Пайдаланушы"
+    },
+    "FORM": {
+      "USERNAME": "Пайдаланушы аты",
+      "USERNAME_PLACEHOLDER": "Пайдаланушы атын енгізіңіз",
+      "FIRST_NAME": "Аты",
+      "FIRST_NAME_PLACEHOLDER": "Атын енгізіңіз",
+      "LAST_NAME": "Тегі",
+      "LAST_NAME_PLACEHOLDER": "Тегін енгізіңіз",
+      "EMAIL": "Email",
+      "EMAIL_PLACEHOLDER": "Email енгізіңіз",
+      "ROLE": "Рөл",
+      "ROLE_PLACEHOLDER": "Рөлдерді таңдаңыз",
+      "ENABLED": "Белсенді",
+      "EMAIL_VERIFIED": "Email расталған",
+      "REQUIRED": "Бұл өріс міндетті",
+      "AT": "Email форматы дұрыс емес"
+    },
+    "CREATED_INFO": {
+      "SUCCESS_MESSAGE": "Пайдаланушы сәтті құрылды",
+      "USER_ID": "Пайдаланушы ID",
+      "PASSWORD_RESET": "Құпия сөзді қалпына келтіру",
+      "PASSWORD_RESET_SENT": "Құпия сөзді қалпына келтіру хаты пайдаланушыға жіберілді"
+    },
+    "BUTTON": {
+      "CANCEL": "Бас тарту",
+      "SAVE": "Сақтау",
+      "CREATE": "Құру",
+      "CLOSE": "Жабу"
+    },
+    "DELETE": {
+      "CONFIRM_TITLE": "Жоюды растау",
+      "CONFIRM_CONTENT": "{{username}} пайдаланушысын жоюға сенімдісіз бе?",
+      "OK_TEXT": "Жою",
+      "CANCEL_TEXT": "Бас тарту",
+      "SUCCESS": "Пайдаланушы сәтті жойылды",
+      "ERROR": "Пайдаланушыны жою қатесі: {{message}}"
+    },
+    "RESET_PASSWORD": {
+      "CONFIRM_TITLE": "Құпия сөзді қалпына келтіру",
+      "CONFIRM_CONTENT": "{{username}} пайдаланушысының құпия сөзін қалпына келтіруге сенімдісіз бе?",
+      "OK_TEXT": "Құпия сөзді қалпына келтіру",
+      "CANCEL_TEXT": "Бас тарту",
+      "SUCCESS": "Құпия сөзді қалпына келтіру хаты сәтті жіберілді",
+      "ERROR": "Құпия сөзді қалпына келтіру қатесі: {{message}}"
+    },
+    "BLOCK": {
+      "SUCCESS": "Пайдаланушы сәтті бұғатталды",
+      "ERROR": "Пайдаланушыны бұғаттау қатесі: {{message}}"
+    },
+    "UNBLOCK": {
+      "SUCCESS": "Пайдаланушы сәтті бұғаттан босатты",
+      "ERROR": "Пайдаланушыны бұғаттан босату қатесі: {{message}}"
+    },
+    "SAVE": {
+      "SUCCESS": "Пайдаланушы сәтті жаңартылды",
+      "ERROR": "Пайдаланушыны жаңарту қатесі: {{message}}"
+    },
+    "CREATE": {
+      "SUCCESS": "Пайдаланушы сәтті құрылды",
+      "ERROR": "Пайдаланушыны құру қатесі: {{message}}"
+    },
+    "LOAD_USER_ERROR": "Пайдаланушы деректерін жүктеу қатесі: {{message}}",
+    "RESET_PASSWORD_INFO": "Құпия сөзді қалпына келтіру хаты пайдаланушыға жіберілді"
+  },
+  "NOTIFICATION": {
+    "STATUS": {
+      "SUCCESS": "Сәтті",
+      "INFO": "Ақпарат",
+      "ERROR": "Қате",
+      "WARNING": "Ескерту"
+    }
+  }
+}

@@ -1,0 +1,106 @@
+﻿@menu-inline-toplevel-item-height: 40px;
+@menu-inline-submenu-bg: inherit;
+
+@menu-item-height: @menu-inline-toplevel-item-height;
+@menu-highlight-color: var(--menu-highlight-color);
+@menu-item-color: var(--menu-item-color);
+@menu-item-active-bg: var(--menu-item-active-bg);
+@menu-item-vertical-margin: 0;
+@menu-item-boundary-margin: 0;
+
+@menu-icon-size: 18px;
+@menu-icon-size-lg: @menu-icon-size;
+
+.@{menu-prefix-cls} {
+  padding-inline: 8px;
+  border-right: 0;
+  transition: none;
+  .@{menu-prefix-cls}-submenu {
+    position: relative;
+
+    .caret-down {
+      display: none !important;
+      position: absolute;
+      top: 16px;
+      right: 8px;
+      min-width: 16px;
+      font-size: 16px;
+      transition: transform 0.3s;
+      transform: scaleY(-1);
+    }
+
+    &.@{menu-prefix-cls}-submenu-open > .ant-menu-sub {
+      & > .caret-down {
+        display: block !important;
+      }
+    }
+  }
+
+  .@{menu-prefix-cls}-submenu-arrow {
+    display: none;
+  }
+
+  .@{menu-prefix-cls}-sub {
+    color: inherit;
+  }
+
+  .@{menu-prefix-cls}-item,
+  .@{menu-prefix-cls}-submenu-title {
+    display: flex;
+    border-radius: @border-radius-base;
+  }
+
+  .@{menu-prefix-cls}-title-content,
+  .@{menu-prefix-cls}-submenu-title {
+    display: flex;
+    align-items: center;
+  }
+
+  .@{iconfont-css-prefix} {
+    display: flex !important;
+    min-width: @menu-icon-size;
+    transition: none;
+
+    + span {
+      margin-left: 0;
+      margin-inline-start: 8px;
+      line-height: 1.5;
+    }
+  }
+
+  .@{menu-prefix-cls}-button {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: @menu-item-color;
+
+    &:hover {
+      color: @menu-highlight-color;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: transparent;
+    }
+
+    span {
+      position: relative;
+      top: 1px;
+    }
+  }
+}
+.@{menu-prefix-cls}-submenu {
+  &-popup {
+    .caret-down {
+      display: none !important;
+    }
+  }
+}

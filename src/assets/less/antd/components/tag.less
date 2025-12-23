@@ -1,0 +1,20 @@
+@tag-border-radius: 2px;
+
+.@{tag-prefix-cls} {
+  font-weight: 600;
+  text-transform: uppercase;
+
+  &-c-task {
+    margin-right: 0;
+    line-height: 22px;
+
+    .@{iconfont-css-prefix} {
+      font-size: @font-size-lg;
+      vertical-align: -0.25em;
+    }
+
+    &-rounded {
+      border-radius: 12px;
+    }
+  }
+}

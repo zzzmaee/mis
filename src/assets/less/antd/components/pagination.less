@@ -1,0 +1,27 @@
+@pagination-item-size-sm: 32px;
+
+.@{pagination-prefix-cls} {
+  display: flex;
+  justify-content: flex-end;
+  padding-block-start: 16px;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  &-item,
+  &-prev,
+  &-jump-prev,
+  &-jump-next {
+    margin-right: 0;
+    margin-inline-end: 8px;
+  }
+
+  &-options {
+    .@{select-prefix-cls}-selector {
+      height: 32px !important;
+    }
+  }
+}

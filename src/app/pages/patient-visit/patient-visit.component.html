@@ -1,0 +1,759 @@
+<form
+  class="inner-content patient-visit"
+  [formGroup]="visitForm"
+  (ngSubmit)="submitVisit()"
+>
+  <div class="page-heading">
+    <div class="page-heading__actions">
+      <div class="saved-indicator">
+        <span>{{ "medicalData.patientVisit.lastSaved" | translate }}:</span>
+        <strong>
+          @if (lastSavedAt) {
+            {{ lastSavedAt | date: "dd.MM.yyyy HH:mm" }}
+          } @else {
+            {{ "medicalData.patientVisit.notSaved" | translate }}
+          }
+        </strong>
+      </div>
+      <div class="page-heading__buttons">
+        <button
+          nz-button
+          nzType="default"
+          type="button"
+          (click)="resetForm()"
+          [disabled]="visitForm.pristine && visitForm.untouched"
+        >
+          {{ "medicalData.patientVisit.actions.clear" | translate }}
+        </button>
+        <button
+          nz-button
+          nzType="primary"
+          type="submit"
+          [nzLoading]="isSaving"
+        >
+          {{ "medicalData.patientVisit.actions.save" | translate }}
+        </button>
+        <button nz-button nzType="default" class="ask-ai-btn" type="button">
+          {{ "medicalData.patientVisit.actions.askAi" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  @if (clinicalRiskLevel === "high") {
+    <nz-alert
+      nzType="error"
+      nzShowIcon
+      [nzMessage]="'medicalData.patientVisit.alert.highRisk' | translate"
+      [nzDescription]="
+        'medicalData.patientVisit.alert.highRiskHint' | translate
+      "
+      class="risk-alert"
+    />
+  } @else if (clinicalRiskLevel === "medium") {
+    <nz-alert
+      nzType="warning"
+      nzShowIcon
+      [nzMessage]="'medicalData.patientVisit.alert.mediumRisk' | translate"
+      [nzDescription]="
+        'medicalData.patientVisit.alert.mediumRiskHint' | translate
+      "
+      class="risk-alert"
+    />
+  }
+
+  <div class="cards-grid">
+    <div class="column">
+      <nz-card
+        class="patient-card"
+        [nzTitle]="'medicalData.patientVisit.patientCard.title' | translate"
+      >
+        <div class="patient-card__avatar-row">
+          <nz-avatar
+            [nzSrc]="patientProfile.photo"
+            [nzSize]="128"
+            nzShape="circle"
+          ></nz-avatar>
+        </div>
+        <div class="patient-card__risk-row">
+          <span class="risk-pill" [attr.data-level]="clinicalRiskLevel">
+            {{
+              ("medicalData.patientVisit.risk." + clinicalRiskLevel) | translate
+            }}
+          </span>
+        </div>
+        <div class="patient-card__header">
+          <div class="patient-card__info">
+            <h3>{{ patientProfile.fullName }}</h3>
+            <p>{{ patientProfile.position }}</p>
+            <div class="patient-card__meta">
+              <span>{{ patientProfile.department }}</span>
+              <span>{{ patientProfile.personnelNumber }}</span>
+            </div>
+          </div>
+        </div>
+        <nz-descriptions nzBordered nzSize="small" [nzColumn]="1">
+          <nz-descriptions-item
+            [nzTitle]="
+              'medicalData.patientVisit.patientCard.birthDate' | translate
+            "
+          >
+            {{ patientProfile.birthDate | date: "dd.MM.yyyy" }}
+          </nz-descriptions-item>
+          <nz-descriptions-item
+            [nzTitle]="'medicalData.patientVisit.patientCard.iin' | translate"
+          >
+            {{ patientProfile.iin }}
+          </nz-descriptions-item>
+          <nz-descriptions-item
+            [nzTitle]="
+              'medicalData.patientVisit.patientCard.contact' | translate
+            "
+          >
+            {{ patientProfile.contactPhone }} · {{ patientProfile.email }}
+          </nz-descriptions-item>
+          <nz-descriptions-item
+            [nzTitle]="
+              'medicalData.patientVisit.patientCard.doctor' | translate
+            "
+          >
+            {{ patientProfile.attendingDoctor }}
+          </nz-descriptions-item>
+        </nz-descriptions>
+
+        <div class="tag-section">
+          <span class="tag-section__label">
+            {{
+              "medicalData.patientVisit.patientCard.riskFactors" | translate
+            }}
+          </span>
+          <div class="tag-section__tags">
+            @for (factor of patientProfile.riskFactors; track factor) {
+              <nz-tag nzColor="volcano">{{ factor }}</nz-tag>
+            }
+          </div>
+        </div>
+
+        <div class="visit-meta">
+          <div>
+            <span>{{
+              "medicalData.patientVisit.patientCard.lastVisit" | translate
+            }}</span>
+            <strong>{{
+              patientProfile.lastVisit | date: "dd.MM.yyyy HH:mm"
+            }}</strong>
+          </div>
+          <div>
+            <span>{{
+              "medicalData.patientVisit.patientCard.nextVisit" | translate
+            }}</span>
+            <strong>{{
+              patientProfile.nextVisit | date: "dd.MM.yyyy HH:mm"
+            }}</strong>
+          </div>
+        </div>
+
+        <nz-divider></nz-divider>
+        <div class="timeline-label">
+          {{ "medicalData.patientVisit.patientCard.timeline" | translate }}
+        </div>
+        <nz-timeline>
+          @for (event of visitTimeline; track event.title) {
+            <nz-timeline-item [nzColor]="event.color">
+              <div class="timeline-item">
+                <span class="timeline-date">{{
+                  event.date | date: "dd.MM.yyyy"
+                }}</span>
+                <strong>{{ event.title }}</strong>
+                <p>{{ event.details }}</p>
+              </div>
+            </nz-timeline-item>
+          }
+        </nz-timeline>
+      </nz-card>
+
+      <nz-card
+        class="lifestyle-card"
+        [nzTitle]="'medicalData.patientVisit.lifestyle.title' | translate"
+      >
+        <div class="lifestyle-grid" formGroupName="lifestyle">
+          <label class="form-control">
+            <span>{{
+              "medicalData.patientVisit.lifestyle.activity" | translate
+            }}</span>
+            <nz-select formControlName="activityLevel" nzAllowClear>
+              @for (option of activityOptions; track option.value) {
+                <nz-option
+                  [nzValue]="option.value"
+                  [nzLabel]="option.label | translate"
+                ></nz-option>
+              }
+            </nz-select>
+          </label>
+          <label class="form-control">
+            <span>{{
+              "medicalData.patientVisit.lifestyle.sleep" | translate
+            }}</span>
+            <nz-select formControlName="sleepQuality" nzAllowClear>
+              @for (option of sleepOptions; track option.value) {
+                <nz-option
+                  [nzValue]="option.value"
+                  [nzLabel]="option.label | translate"
+                ></nz-option>
+              }
+            </nz-select>
+          </label>
+          <label class="form-control">
+            <span>{{
+              "medicalData.patientVisit.lifestyle.stress" | translate
+            }}</span>
+            <nz-select formControlName="stressLevel" nzAllowClear>
+              @for (option of stressOptions; track option.value) {
+                <nz-option
+                  [nzValue]="option.value"
+                  [nzLabel]="option.label | translate"
+                ></nz-option>
+              }
+            </nz-select>
+          </label>
+          <label class="form-control">
+            <span>{{
+              "medicalData.patientVisit.lifestyle.nutrition" | translate
+            }}</span>
+            <nz-select formControlName="nutrition" nzAllowClear>
+              @for (option of nutritionOptions; track option.value) {
+                <nz-option
+                  [nzValue]="option.value"
+                  [nzLabel]="option.label | translate"
+                ></nz-option>
+              }
+            </nz-select>
+          </label>
+        </div>
+      </nz-card>
+
+      <nz-card
+        class="telemed-card"
+        [nzTitle]="'medicalData.patientVisit.telemed.title' | translate"
+      >
+        <p class="telemed-card__subtitle">
+          {{ "medicalData.patientVisit.telemed.subtitle" | translate }}
+        </p>
+        <div class="telemed-video">
+          <div
+            class="telemed-video__status"
+            [attr.data-status]="telemedSession.status"
+          >
+            {{
+              "medicalData.patientVisit.telemed.status." + telemedSession.status
+                | translate
+            }}
+          </div>
+          <div class="telemed-video__timer">
+            {{ telemedSession.scheduledAt | date: "dd MMM, HH:mm" }} ·
+            {{ telemedSession.durationMinutes }}
+            {{ "medicalData.patientVisit.telemed.minutes" | translate }}
+          </div>
+        </div>
+        <div class="telemed-session">
+          <div>
+            <span>{{ "medicalData.patientVisit.telemed.platform" | translate }}</span>
+            <strong>{{ telemedSession.platform }}</strong>
+          </div>
+          <div>
+            <span>{{ "medicalData.patientVisit.telemed.channel" | translate }}</span>
+            <strong>{{ telemedSession.channel }}</strong>
+          </div>
+          <div>
+            <span>{{ "medicalData.patientVisit.telemed.pin" | translate }}</span>
+            <strong>{{ telemedSession.pin }}</strong>
+          </div>
+          <div>
+            <span>{{ "medicalData.patientVisit.telemed.doctor" | translate }}</span>
+            <strong>{{ telemedSession.doctorSide }}</strong>
+          </div>
+          <div>
+            <span>{{ "medicalData.patientVisit.telemed.patient" | translate }}</span>
+            <strong>{{ telemedSession.patientSide }}</strong>
+          </div>
+          <div>
+            <span>{{ "medicalData.patientVisit.telemed.paramedic" | translate }}</span>
+            <strong>{{ telemedSession.paramedicName }}</strong>
+          </div>
+          <div>
+            <span>{{ "medicalData.patientVisit.telemed.device" | translate }}</span>
+            <strong>{{ telemedSession.device }}</strong>
+          </div>
+        </div>
+        <div class="telemed-session__actions">
+          <span>
+            {{ "medicalData.patientVisit.telemed.waiting" | translate }}
+          </span>
+          <button
+            nz-button
+            nzType="primary"
+            [disabled]="showTelemedCall || !jitsiReady"
+            type="button"
+            (click)="startTelemedCall()"
+          >
+            {{ "medicalData.patientVisit.telemed.startNow" | translate }}
+          </button>
+        </div>
+        <p class="telemed-note">
+          {{ telemedSession.noteKey | translate }}
+        </p>
+        <div class="telemed-actions">
+          <button nz-button type="button">
+            {{ "medicalData.patientVisit.telemed.share" | translate }}
+          </button>
+          <button nz-button nzType="default" nzGhost type="button">
+            {{ "medicalData.patientVisit.telemed.remind" | translate }}
+          </button>
+        </div>
+      </nz-card>
+
+    </div>
+
+    <div class="column">
+    <nz-modal
+      [nzVisible]="isTelemedModalVisible"
+      (nzOnCancel)="endTelemedCall()"
+      [nzFooter]="null"
+      nzWidth="90vw"
+      nzCentered
+      nzKeyboard="false"
+      nzMaskClosable="false"
+      class="telemed-modal"
+    >
+      <ng-container *nzModalContent>
+        <div class="telemed-modal__header">
+          <div>
+            <h3>
+              {{ "medicalData.patientVisit.telemed.title" | translate }}
+            </h3>
+            <p>{{ telemedSession.channel }} · {{ telemedSession.platform }}</p>
+          </div>
+          <div class="telemed-modal__actions">
+            <button
+              nz-button
+              nzDanger
+              nzType="default"
+              type="button"
+              (click)="endTelemedCall()"
+            >
+              {{ "medicalData.patientVisit.telemed.hangup" | translate }}
+            </button>
+            <button nz-button type="button">
+              {{ "medicalData.patientVisit.telemed.share" | translate }}
+            </button>
+            <button nz-button nzType="default" nzGhost type="button">
+              {{ "medicalData.patientVisit.telemed.remind" | translate }}
+            </button>
+          </div>
+        </div>
+        <div class="telemed-modal__content">
+          <div class="telemed-modal__video">
+            <div #jitsiContainer class="telemed-modal__frame"></div>
+          </div>
+        </div>
+      </ng-container>
+    </nz-modal>
+
+      <nz-card class="history-card">
+        <div class="section-heading">
+          <div>
+            <h3>{{ "medicalData.patientVisit.history.title" | translate }}</h3>
+            <p>
+              {{ "medicalData.patientVisit.history.subtitle" | translate }}
+            </p>
+          </div>
+        </div>
+        <div class="history-form" formGroupName="history">
+          <label class="form-control">
+            <span>{{
+              "medicalData.patientVisit.history.chronic" | translate
+            }}</span>
+            <nz-select
+              formControlName="chronicDiseases"
+              nzMode="multiple"
+              nzPlaceHolder="{{
+                'medicalData.patientVisit.history.selectPlaceholder' | translate
+              }}"
+              nzAllowClear
+              [nzMaxTagCount]="3"
+            >
+              @for (option of chronicDiseaseOptions; track option.value) {
+                <nz-option
+                  [nzValue]="option.value"
+                  [nzLabel]="option.label | translate"
+                ></nz-option>
+              }
+            </nz-select>
+          </label>
+
+          <label class="form-control">
+            <span>{{
+              "medicalData.patientVisit.history.allergies" | translate
+            }}</span>
+            <nz-select
+              formControlName="allergies"
+              nzMode="multiple"
+              nzPlaceHolder="{{
+                'medicalData.patientVisit.history.selectPlaceholder' | translate
+              }}"
+              nzAllowClear
+              [nzMaxTagCount]="3"
+            >
+              @for (option of allergyOptions; track option.value) {
+                <nz-option
+                  [nzValue]="option.value"
+                  [nzLabel]="option.label | translate"
+                ></nz-option>
+              }
+            </nz-select>
+          </label>
+
+          <label class="form-control">
+            <span>{{
+              "medicalData.patientVisit.history.medications" | translate
+            }}</span>
+            <nz-select
+              formControlName="medications"
+              nzMode="multiple"
+              nzPlaceHolder="{{
+                'medicalData.patientVisit.history.selectPlaceholder' | translate
+              }}"
+              nzAllowClear
+              [nzMaxTagCount]="3"
+            >
+              @for (option of medicationOptions; track option.value) {
+                <nz-option
+                  [nzValue]="option.value"
+                  [nzLabel]="option.label | translate"
+                ></nz-option>
+              }
+            </nz-select>
+          </label>
+
+          <label class="form-control">
+            <span>{{
+              "medicalData.patientVisit.history.surgeries" | translate
+            }}</span>
+            <nz-select
+              formControlName="surgeries"
+              nzMode="multiple"
+              nzPlaceHolder="{{
+                'medicalData.patientVisit.history.selectPlaceholder' | translate
+              }}"
+              nzAllowClear
+              [nzMaxTagCount]="2"
+            >
+              @for (option of surgeryOptions; track option.value) {
+                <nz-option
+                  [nzValue]="option.value"
+                  [nzLabel]="option.label | translate"
+                ></nz-option>
+              }
+            </nz-select>
+          </label>
+
+          <label class="form-control">
+            <span>{{
+              "medicalData.patientVisit.history.notes" | translate
+            }}</span>
+            <textarea
+              nz-input
+              rows="4"
+              formControlName="historyNotes"
+              [placeholder]="
+                'medicalData.patientVisit.history.notesPlaceholder' | translate
+              "
+            ></textarea>
+            @if (isInvalid("history.historyNotes")) {
+              <small class="error">{{ "validation.required" | translate }}</small>
+            }
+          </label>
+          <div class="template-chips">
+            <span class="template-chips__label">
+              {{ "medicalData.patientVisit.history.quickNotes" | translate }}
+            </span>
+            @for (template of historyTemplates; track template) {
+              <button
+                nz-button
+                type="button"
+                nzType="default"
+                nzSize="small"
+                nzGhost
+                (click)="appendToField('history.historyNotes', template)"
+              >
+                {{ template }}
+              </button>
+            }
+          </div>
+        </div>
+      </nz-card>
+
+      <nz-card class="condition-card">
+        <div class="section-heading">
+          <div>
+            <h3>{{ "medicalData.patientVisit.current.title" | translate }}</h3>
+            <p>
+              {{ "medicalData.patientVisit.current.subtitle" | translate }}
+            </p>
+          </div>
+        </div>
+        <div class="condition-form" formGroupName="current">
+          <div class="vitals-block" formGroupName="vitals">
+            @for (metric of vitalsConfig; track metric.control) {
+              <div
+                class="vital-card"
+                [attr.data-state]="resolveMetricState(metric.control)"
+              >
+                <span class="vital-card__label">{{
+                  metric.labelKey | translate
+                }}</span>
+                <div class="vital-card__value">
+                  <nz-input-number
+                    [formControlName]="metric.control"
+                    [nzStep]="metric.step"
+                    [nzMin]="metric.min"
+                    [nzMax]="metric.max"
+                  ></nz-input-number>
+                  <span class="unit">{{ metric.unit }}</span>
+                </div>
+              </div>
+            }
+          </div>
+
+          <div class="text-grid">
+            <label class="form-control">
+              <span>{{
+                "medicalData.patientVisit.current.complaints" | translate
+              }}</span>
+              <textarea
+                nz-input
+                rows="3"
+                formControlName="complaints"
+                [placeholder]="
+                  'medicalData.patientVisit.current.complaintsPlaceholder'
+                    | translate
+                "
+              ></textarea>
+              @if (isInvalid("current.complaints")) {
+                <small class="error">{{
+                  "validation.required" | translate
+                }}</small>
+              }
+              <div class="template-chips">
+                @for (template of complaintTemplates; track template) {
+                  <button
+                    nz-button
+                    type="button"
+                    nzType="default"
+                    nzSize="small"
+                    nzGhost
+                    (click)="appendToField('current.complaints', template)"
+                  >
+                    {{ template }}
+                  </button>
+                }
+              </div>
+            </label>
+
+            <label class="form-control">
+              <span>{{
+                "medicalData.patientVisit.current.objective" | translate
+              }}</span>
+              <textarea
+                nz-input
+                rows="3"
+                formControlName="objectiveStatus"
+                [placeholder]="
+                  'medicalData.patientVisit.current.objectivePlaceholder'
+                    | translate
+                "
+              ></textarea>
+              @if (isInvalid("current.objectiveStatus")) {
+                <small class="error">{{
+                  "validation.required" | translate
+                }}</small>
+              }
+              <div class="template-chips">
+                @for (template of objectiveTemplates; track template) {
+                  <button
+                    nz-button
+                    type="button"
+                    nzType="default"
+                    nzSize="small"
+                    nzGhost
+                    (click)="appendToField('current.objectiveStatus', template)"
+                  >
+                    {{ template }}
+                  </button>
+                }
+              </div>
+            </label>
+
+            <label class="form-control">
+              <span>{{
+                "medicalData.patientVisit.current.diagnosis" | translate
+              }}</span>
+              <textarea
+                nz-input
+                rows="2"
+                formControlName="diagnosis"
+                [placeholder]="
+                  'medicalData.patientVisit.current.diagnosisPlaceholder'
+                    | translate
+                "
+              ></textarea>
+              @if (isInvalid("current.diagnosis")) {
+                <small class="error">{{
+                  "validation.required" | translate
+                }}</small>
+              }
+            </label>
+
+            <label class="form-control">
+              <span>{{
+                "medicalData.patientVisit.current.plan" | translate
+              }}</span>
+              <textarea
+                nz-input
+                rows="3"
+                formControlName="treatmentPlan"
+                [placeholder]="
+                  'medicalData.patientVisit.current.planPlaceholder' | translate
+                "
+              ></textarea>
+              @if (isInvalid("current.treatmentPlan")) {
+                <small class="error">{{
+                  "validation.required" | translate
+                }}</small>
+              }
+              <div class="template-chips">
+                @for (template of planTemplates; track template) {
+                  <button
+                    nz-button
+                    type="button"
+                    nzType="default"
+                    nzSize="small"
+                    nzGhost
+                    (click)="appendToField('current.treatmentPlan', template)"
+                  >
+                    {{ template }}
+                  </button>
+                }
+              </div>
+            </label>
+
+            <label class="form-control">
+              <span>{{
+                "medicalData.patientVisit.current.recommendations" | translate
+              }}</span>
+              <textarea
+                nz-input
+                rows="2"
+                formControlName="recommendations"
+                [placeholder]="
+                  'medicalData.patientVisit.current.recommendationsPlaceholder'
+                    | translate
+                "
+              ></textarea>
+            </label>
+          </div>
+        </div>
+      </nz-card>
+    </div>
+
+    <div class="column column--ai">
+      <nz-card class="ai-card">
+        <div class="ai-card__header">
+          <div>
+            <p class="eyebrow">
+              {{
+                "medicalData.patientVisit.ai.assistant"
+                  | translate : { name: aiAnalysis.assistantName }
+              }}
+            </p>
+            <h3>{{ "medicalData.patientVisit.ai.title" | translate }}</h3>
+          </div>
+          <div class="ai-risk-score">
+            <span>{{ aiAnalysis.riskScore }}</span>
+            <small>%</small>
+          </div>
+        </div>
+        <div class="ai-meta">
+          <span>
+            {{ "medicalData.patientVisit.ai.updated" | translate }}:
+            {{ aiAnalysis.updatedAt | date: "dd.MM HH:mm" }}
+          </span>
+        </div>
+        <div class="risk-pill" [attr.data-level]="aiAnalysis.riskLevel">
+          {{
+            ("medicalData.patientVisit.risk." + aiAnalysis.riskLevel) | translate
+          }}
+        </div>
+        <p class="ai-summary">
+          {{ aiAnalysis.summaryKey | translate }}
+        </p>
+
+        <div class="ai-section">
+          <div class="ai-section__title">
+            {{ "medicalData.patientVisit.ai.triggersTitle" | translate }}
+          </div>
+          <ul class="ai-section__list">
+            @for (trigger of aiAnalysis.triggers; track trigger.labelKey) {
+              <li>
+                <div>
+                  <strong>{{ trigger.labelKey | translate }}</strong>
+                  <p>{{ trigger.detailKey | translate }}</p>
+                </div>
+                <span class="impact-pill" [attr.data-impact]="trigger.impact">
+                  {{
+                    ("medicalData.patientVisit.ai.impact." + trigger.impact)
+                      | translate
+                  }}
+                </span>
+              </li>
+            }
+          </ul>
+        </div>
+
+        <div class="ai-section">
+          <div class="ai-section__title">
+            {{ "medicalData.patientVisit.ai.recommendationsTitle" | translate }}
+          </div>
+          <ul class="ai-recommendations">
+            @for (item of aiAnalysis.recommendations; track item) {
+              <li>
+                <span nz-icon nzType="check-circle" nzTheme="twotone"></span>
+                <span>{{ item | translate }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+
+        <div class="ai-section">
+          <div class="ai-section__title">
+            {{ "medicalData.patientVisit.ai.followupsTitle" | translate }}
+          </div>
+          <ul class="ai-followups">
+            @for (item of aiAnalysis.followUps; track item.titleKey) {
+              <li>
+                <div>
+                  <strong>{{ item.titleKey | translate }}</strong>
+                  <span>{{ item.dueKey | translate }}</span>
+                </div>
+                <button nz-button nzType="link" nzSize="small">
+                  {{ "medicalData.patientVisit.ai.schedule" | translate }}
+                </button>
+              </li>
+            }
+          </ul>
+        </div>
+      </nz-card>
+    </div>
+  </div>
+</form>
+

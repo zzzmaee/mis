@@ -1,0 +1,12 @@
+stages:
+  - build
+  - deploy-helm
+
+variables:
+  IMAGE_NAME: $CI_REGISTRY/aiteam/$CI_PROJECT_NAME:$CI_COMMIT_SHA
+
+include:
+  - project: 'Infra-team/gitlab-ci-templates'
+    file: '/build/build-node.yml'
+  - project: 'Infra-team/gitlab-ci-templates'
+    file: '/deploy/deploy-helm.yml'

@@ -1,0 +1,28 @@
+.ngx-charts {
+  fill: var(--color-text-secondary);
+}
+
+//.ngx-charts .tick text {
+//  font-size: 14px !important;
+//}
+
+.ngx-charts .gridline-path {
+  stroke: var(--color-border-light) !important;
+  stroke-dasharray: 4 4;
+
+  &-vertical {
+    display: none;
+  }
+}
+
+.ngx-charts .grid-panel.odd rect {
+  fill: none !important;
+}
+
+.ngx-charts-tooltip-content .tooltip-label {
+  display: none !important;
+}
+
+.ngx-charts-tooltip-content .tooltip-val {
+  padding-top: 8px !important;
+}

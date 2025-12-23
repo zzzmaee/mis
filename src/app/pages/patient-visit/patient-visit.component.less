@@ -1,0 +1,687 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.patient-visit {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+}
+
+.page-heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.page-heading__titles h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.page-heading__titles .muted {
+  margin: 4px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.page-heading__actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.saved-indicator {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.saved-indicator strong {
+  display: block;
+  color: #1f2937;
+  font-size: 14px;
+}
+
+.page-heading__buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.risk-alert {
+  margin-top: -8px;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 360px) minmax(0, 1fr) minmax(320px, 380px);
+  gap: 24px;
+  flex: 1;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.column--ai nz-card {
+  height: 100%;
+}
+
+.patient-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.patient-card__avatar-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% + 48px);
+  margin: -24px -24px 16px;
+  padding: 24px 0;
+  background: linear-gradient(135deg, #f0f5ff, #e6f7ff);
+}
+
+.patient-card__risk-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.patient-card__risk-row .risk-pill {
+  margin: 0;
+}
+
+
+.patient-card__info h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #111827;
+}
+
+.patient-card__info p {
+  margin: 2px 0 6px;
+  color: #4b5563;
+}
+
+.patient-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  color: #6b7280;
+  justify-content: center;
+}
+
+.risk-pill {
+  margin-left: auto;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.risk-pill[data-level="low"] {
+  background: #f6ffed;
+  color: #389e0d;
+}
+
+.risk-pill[data-level="medium"] {
+  background: #fff7e6;
+  color: #d46b08;
+}
+
+.risk-pill[data-level="high"] {
+  background: #fff1f0;
+  color: #cf1322;
+}
+
+.tag-section {
+  margin-top: 16px;
+}
+
+.tag-section__label {
+  display: block;
+  font-weight: 600;
+  color: #5f6b7c;
+  margin-bottom: 8px;
+}
+
+.tag-section__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.visit-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.visit-meta strong {
+  display: block;
+  color: #1f2937;
+  margin-top: 2px;
+}
+
+.timeline-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #5f6b7c;
+  margin-bottom: 8px;
+}
+
+.timeline-item {
+  color: #4b5563;
+}
+
+.timeline-item strong {
+  display: block;
+  color: #1f2937;
+  margin-top: 4px;
+}
+
+.timeline-item p {
+  margin: 4px 0 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.timeline-date {
+  font-size: 12px;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.lifestyle-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.form-control textarea[nz-input] {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.form-control nz-select {
+  width: 100%;
+}
+
+.error {
+  font-size: 12px;
+  color: #ff4d4f;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.section-heading h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.section-heading p {
+  margin: 4px 0 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.history-form,
+.condition-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.template-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.template-chips button {
+  line-height: 1.2;
+  background: #f5f7ff;
+  border-color: #d6e0ff;
+  color: #1d39c4;
+}
+
+.template-chips__label {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-right: 4px;
+}
+
+.vitals-block {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.vital-card {
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+  background: #fafafa;
+  padding: 12px;
+}
+
+.vital-card[data-state="warning"] {
+  border-color: #faad14;
+  background: #fffbe6;
+}
+
+.vital-card[data-state="danger"] {
+  border-color: #ff4d4f;
+  background: #fff1f0;
+}
+
+.vital-card__label {
+  font-size: 12px;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.vital-card__value {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.vital-card__value .unit {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.text-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.patient-visit nz-card {
+  border-radius: 16px;
+}
+
+.telemed-card__subtitle {
+  margin: 0 0 12px;
+  color: #4b5563;
+  font-size: 13px;
+}
+
+.telemed-video {
+  border-radius: 16px;
+  height: 200px;
+  background: radial-gradient(circle at 20% 20%, #593cff, #1f1f3b);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.telemed-video::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  top: -60px;
+  right: -40px;
+}
+
+.telemed-video--active {
+  background: #000;
+  padding: 0;
+}
+
+.telemed-video--active::after {
+  display: none;
+}
+
+.telemed-video--active .telemed-video__status,
+.telemed-video--active .telemed-video__timer {
+  display: none;
+}
+
+.telemed-video__frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.telemed-video__status {
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.2);
+  margin-bottom: 8px;
+}
+
+.telemed-video__status[data-status="live"] {
+  background: rgba(255, 77, 79, 0.3);
+  color: #ffccc7;
+}
+
+.telemed-video__timer {
+  font-size: 16px;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.telemed-session {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.telemed-session span {
+  font-size: 12px;
+  color: #94a3b8;
+  display: block;
+}
+
+.telemed-session strong {
+  display: block;
+  color: #1f2937;
+}
+
+.telemed-note {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.telemed-session__actions {
+  margin: 16px 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.telemed-session__actions span {
+  color: #4b5563;
+  font-size: 13px;
+}
+
+.telemed-modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.telemed-modal__header h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.telemed-modal__header p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.telemed-modal__actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.telemed-modal__content {
+  background: #000;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.telemed-modal__video {
+  width: 100%;
+  height: 70vh;
+}
+
+.telemed-modal__frame {
+  width: 100%;
+  height: 100%;
+}
+
+.ask-ai-btn {
+  border-color: #2f54eb;
+  color: #2f54eb;
+  font-weight: 600;
+}
+
+.ask-ai-btn:hover {
+  border-color: #1d39c4;
+  color: #1d39c4;
+  background: #f0f5ff;
+}
+
+.ai-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.ai-card__header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.ai-risk-score {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #111827;
+  color: #fff;
+  width: 64px;
+  height: 64px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.ai-risk-score small {
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.ai-meta {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.ai-summary {
+  margin: 16px 0;
+  color: #1f2937;
+  line-height: 1.4;
+}
+
+.ai-section + .ai-section {
+  margin-top: 16px;
+}
+
+.ai-section__title {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #94a3b8;
+  margin-bottom: 8px;
+}
+
+.ai-section__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ai-section__list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+  background: #fafafa;
+}
+
+.ai-section__list strong {
+  display: block;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.ai-section__list p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 13px;
+}
+
+.impact-pill {
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.impact-pill[data-impact="high"] {
+  background: #fff1f0;
+  color: #cf1322;
+}
+
+.impact-pill[data-impact="medium"] {
+  background: #fff7e6;
+  color: #d46b08;
+}
+
+.impact-pill[data-impact="low"] {
+  background: #f6ffed;
+  color: #389e0d;
+}
+
+.ai-recommendations,
+.ai-followups {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ai-recommendations li {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: #1f2937;
+}
+
+.ai-recommendations [nz-icon] {
+  color: #389e0d;
+}
+
+.ai-followups li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+}
+
+.ai-followups strong {
+  display: block;
+  color: #111827;
+}
+
+.ai-followups span {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+@media (max-width: 1200px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-heading__actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .visit-meta {
+    flex-direction: column;
+  }
+
+  .ai-followups li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .telemed-session {
+    grid-template-columns: 1fr;
+  }
+
+  .telemed-controls {
+    flex-wrap: wrap;
+  }
+
+  .telemed-session__actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+

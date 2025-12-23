@@ -1,0 +1,135 @@
+<ng-container>
+  <ng-container *ngIf="createdUserId(); else userFormTpl">
+    <nz-alert class="mb-4" nzType="success" nzShowIcon [nzMessage]="'USERS.CREATED_INFO.SUCCESS_MESSAGE' | translate"></nz-alert>
+
+    <nz-descriptions nzBordered nzSize="small" [nzColumn]="1">
+      <nz-descriptions-item [nzTitle]="'USERS.CREATED_INFO.USER_ID' | translate">
+        {{ createdUserId() }}
+      </nz-descriptions-item>
+      <nz-descriptions-item [nzTitle]="'USERS.CREATED_INFO.PASSWORD_RESET' | translate">
+        {{ 'USERS.CREATED_INFO.PASSWORD_RESET_SENT' | translate }}
+      </nz-descriptions-item>
+    </nz-descriptions>
+  </ng-container>
+
+  <ng-template #userFormTpl>
+    <nz-spin [nzSpinning]="isSaving()">
+      <form nz-form [formGroup]="userForm" nzLayout="vertical">
+        <nz-form-item>
+          <nz-form-label nzFor="username" nzRequired>
+            {{ 'USERS.FORM.USERNAME' | translate }}
+          </nz-form-label>
+          <nz-form-control [nzErrorTip]="'USERS.FORM.REQUIRED' | translate">
+            <input
+              nz-input
+              formControlName="username"
+              id="username"
+              [placeholder]="'USERS.FORM.USERNAME_PLACEHOLDER' | translate"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzFor="firstName" nzRequired>
+            {{ 'USERS.FORM.FIRST_NAME' | translate }}
+          </nz-form-label>
+          <nz-form-control [nzErrorTip]="'USERS.FORM.REQUIRED' | translate">
+            <input
+              nz-input
+              formControlName="firstName"
+              id="firstName"
+              [placeholder]="'USERS.FORM.FIRST_NAME_PLACEHOLDER' | translate"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzFor="lastName" nzRequired>
+            {{ 'USERS.FORM.LAST_NAME' | translate }}
+          </nz-form-label>
+          <nz-form-control [nzErrorTip]="'USERS.FORM.REQUIRED' | translate">
+            <input
+              nz-input
+              formControlName="lastName"
+              id="lastName"
+              [placeholder]="'USERS.FORM.LAST_NAME_PLACEHOLDER' | translate"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzFor="email" nzRequired>
+            {{ 'USERS.FORM.EMAIL' | translate }}
+          </nz-form-label>
+          <nz-form-control [nzErrorTip]="emailErrorTpl">
+            <input
+              nz-input
+              formControlName="email"
+              id="email"
+              type="email"
+              [placeholder]="'USERS.FORM.EMAIL_PLACEHOLDER' | translate"
+            />
+            <ng-template #emailErrorTpl>
+              @if (emailControl.errors?.['email']) {
+                {{ 'USERS.FORM.AT' | translate }}
+              }
+              @if (emailControl.errors?.['required']) {
+                {{ 'USERS.FORM.REQUIRED' | translate }}
+              }
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzFor="roles">
+            {{ 'USERS.FORM.ROLE' | translate }}
+          </nz-form-label>
+          <nz-form-control>
+            <nz-select
+              nzMode="multiple"
+              [nzPlaceHolder]="'USERS.FORM.ROLE_PLACEHOLDER' | translate"
+              formControlName="roles"
+              nzShowArrow
+              nzId="roles"
+            >
+              @for (role of roleOptions; track role.value) {
+                <nz-option [nzLabel]="role.label | translate" [nzValue]="role.value"></nz-option>
+              }
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzFor="enabled">
+            {{ 'USERS.FORM.ENABLED' | translate }}
+          </nz-form-label>
+          <nz-form-control>
+            <nz-switch formControlName="enabled"></nz-switch>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzFor="emailVerified">
+            {{ 'USERS.FORM.EMAIL_VERIFIED' | translate }}
+          </nz-form-label>
+          <nz-form-control>
+            <nz-switch formControlName="emailVerified"></nz-switch>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </nz-spin>
+  </ng-template>
+
+  <div *nzModalFooter>
+    <ng-container *ngIf="!createdUserId(); else closeButton">
+      <button nz-button nzType="default" (click)="closeModal()">
+        {{ 'USERS.BUTTON.CANCEL' | translate }}
+      </button>
+      <button nz-button nzType="primary" (click)="saveUser()" [nzLoading]="isSaving()">
+        {{ (editingUser ? 'USERS.BUTTON.SAVE' : 'USERS.BUTTON.CREATE') | translate }}
+      </button>
+    </ng-container>
+
+    <ng-template #closeButton>
+      <button nz-button nzType="primary" (click)="closeModal()">
+        {{ 'USERS.BUTTON.CLOSE' | translate }}
+      </button>
+    </ng-template>
+  </div>
+</ng-container>

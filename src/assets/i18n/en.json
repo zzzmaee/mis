@@ -1,0 +1,118 @@
+{
+  "AUTH": {
+    "LOGIN": "Sign In",
+    "FORM": {
+      "USERNAME": {
+        "PLACEHOLDER": "Username",
+        "ERROR": "Please enter your username"
+      },
+      "PASSWORD": {
+        "PLACEHOLDER": "Password",
+        "ERROR": "Please enter your password"
+      }
+    },
+    "NOTIFICATIONS": {
+      "SUCCESS": "Successfully signed in",
+      "ERROR": "Sign in error. Please check your username and password"
+    }
+  },
+  "SIDEBAR": {
+    "MENU": {
+      "PROFILE": "Profile",
+      "REPORTS": "Reports",
+      "USERS": "Users",
+      "LOGS": "Logs",
+      "LOGOUT": "Logout",
+      "EXPAND_SIDEBAR": "Expand sidebar",
+      "COLLAPSE_SIDEBAR": "Collapse sidebar"
+    }
+  },
+  "USERS": {
+    "ADD_USER": "Add User",
+    "EDIT_USER": "Edit User",
+    "LOAD_ERROR": "Error loading users: {{message}}",
+    "TABLE": {
+      "USERNAME": "Username",
+      "FULL_NAME": "Full Name",
+      "ROLE": "Role",
+      "ACTION": "Actions",
+      "NO_ROLES": "No roles"
+    },
+    "ROLES": {
+      "SUPERADMIN": "Super Admin",
+      "ADMIN": "Admin",
+      "INSPECTOR": "Inspector",
+      "USER": "User"
+    },
+    "FORM": {
+      "USERNAME": "Username",
+      "USERNAME_PLACEHOLDER": "Enter username",
+      "FIRST_NAME": "First Name",
+      "FIRST_NAME_PLACEHOLDER": "Enter first name",
+      "LAST_NAME": "Last Name",
+      "LAST_NAME_PLACEHOLDER": "Enter last name",
+      "EMAIL": "Email",
+      "EMAIL_PLACEHOLDER": "Enter email",
+      "ROLE": "Role",
+      "ROLE_PLACEHOLDER": "Select roles",
+      "ENABLED": "Enabled",
+      "EMAIL_VERIFIED": "Email Verified",
+      "REQUIRED": "This field is required",
+      "AT": "Invalid email format"
+    },
+    "CREATED_INFO": {
+      "SUCCESS_MESSAGE": "User created successfully",
+      "USER_ID": "User ID",
+      "PASSWORD_RESET": "Password Reset",
+      "PASSWORD_RESET_SENT": "Password reset email has been sent to the user"
+    },
+    "BUTTON": {
+      "CANCEL": "Cancel",
+      "SAVE": "Save",
+      "CREATE": "Create",
+      "CLOSE": "Close"
+    },
+    "DELETE": {
+      "CONFIRM_TITLE": "Confirm Deletion",
+      "CONFIRM_CONTENT": "Are you sure you want to delete user {{username}}?",
+      "OK_TEXT": "Delete",
+      "CANCEL_TEXT": "Cancel",
+      "SUCCESS": "User deleted successfully",
+      "ERROR": "Error deleting user: {{message}}"
+    },
+    "RESET_PASSWORD": {
+      "CONFIRM_TITLE": "Reset Password",
+      "CONFIRM_CONTENT": "Are you sure you want to reset the password for user {{username}}?",
+      "OK_TEXT": "Reset Password",
+      "CANCEL_TEXT": "Cancel",
+      "SUCCESS": "Password reset email sent successfully",
+      "ERROR": "Error resetting password: {{message}}"
+    },
+    "BLOCK": {
+      "SUCCESS": "User blocked successfully",
+      "ERROR": "Error blocking user: {{message}}"
+    },
+    "UNBLOCK": {
+      "SUCCESS": "User unblocked successfully",
+      "ERROR": "Error unblocking user: {{message}}"
+    },
+    "SAVE": {
+      "SUCCESS": "User updated successfully",
+      "ERROR": "Error updating user: {{message}}"
+    },
+    "CREATE": {
+      "SUCCESS": "User created successfully",
+      "ERROR": "Error creating user: {{message}}"
+    },
+    "LOAD_USER_ERROR": "Error loading user data: {{message}}",
+    "RESET_PASSWORD_INFO": "Password reset email has been sent to the user"
+  },
+  "NOTIFICATION": {
+    "STATUS": {
+      "SUCCESS": "Success",
+      "INFO": "Info",
+      "ERROR": "Error",
+      "WARNING": "Warning"
+    }
+  }
+}

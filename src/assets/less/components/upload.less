@@ -1,0 +1,47 @@
+.app-upload {
+  width: 100%;
+  max-width: 290px;
+  display: grid;
+  grid-template-columns: 1fr max-content;
+
+  &__input {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    column-gap: 8px;
+    width: 100%;
+    padding: @input-padding-vertical-base @input-padding-horizontal-base;
+    color: @input-color;
+    font-size: @font-size-base;
+    line-height: @line-height-base;
+    background-color: @input-bg;
+    border: @border-width-base @border-style-base @input-border-color;
+    border-top-left-radius: @control-border-radius;
+    border-bottom-left-radius: @control-border-radius;
+  }
+
+  &__value {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &__placeholder {
+    color: @input-placeholder-color;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &__button {
+    width: 40px;
+    height: 40px;
+    background-color: @neutral-2;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+    margin-left: -1px;
+  }
+}
+
+.upload-area {
+  display: flex;
+}

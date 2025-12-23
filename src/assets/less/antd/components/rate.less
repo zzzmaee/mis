@@ -1,0 +1,32 @@
+@rate-star-size: @font-size-lg;
+
+.@{rate-prefix-cls} {
+  &-star {
+    position: relative;
+    display: inline-block;
+    color: inherit;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-right: 2px;
+    }
+  }
+
+  &-text {
+    margin: 0;
+    font-weight: 500;
+    vertical-align: middle;
+
+    &:first-child {
+      margin-right: 8px;
+    }
+
+    &:last-child {
+      margin-left: 8px;
+    }
+  }
+
+  &-wrapper {
+    white-space: nowrap;
+  }
+}

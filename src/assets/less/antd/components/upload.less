@@ -1,0 +1,32 @@
+.@{upload-prefix-cls} {
+  &&-select-picture-card {
+    margin: 0;
+  }
+
+  &-picture-card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+}
+
+.@{upload-prefix-cls}-list {
+  display: contents;
+
+  &-picture-card {
+    &-container {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.@{upload-prefix-cls}-list {
+  &-item {
+    height: auto;
+
+    &-info {
+      padding: 4px;
+      border-radius: @border-radius-base;
+    }
+  }
+}

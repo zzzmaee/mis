@@ -1,0 +1,109 @@
+﻿<div class="mb-4 text-right">
+  <button nz-button nzType="primary" (click)="openUserModal()">
+    <span nz-icon nzType="plus"></span>
+    {{ 'USERS.ADD_USER' | translate }}
+  </button>
+</div>
+
+<nz-table
+  #userTable
+  [nzData]="users()"
+  [nzLoading]="isLoading()"
+  [nzShowPagination]="true"
+  [nzPageSize]="10"
+>
+  <thead>
+    <tr>
+      <th>
+        {{ 'USERS.TABLE.USERNAME' | translate }}
+      </th>
+      <th>
+        {{ 'USERS.TABLE.FULL_NAME' | translate }}
+      </th>
+      <th>
+        {{ 'USERS.TABLE.ROLE' | translate }}
+      </th>
+      <th>
+        {{ 'USERS.TABLE.ACTION' | translate }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (user of userTable.data; track user.id) {
+      <tr>
+        <td>{{ user.username }}</td>
+        <td>{{ user.firstName }} {{ user.lastName }}</td>
+        <td>
+          @if (user.attributes && user.attributes['roles'] && user.attributes['roles'].length > 0) {
+            @for (role of user.attributes['roles']; track role; let last = $last) {
+              {{ 'USERS.ROLES.' + role | translate }}@if (!last){,}
+            }
+          } @else {
+            {{ 'USERS.TABLE.NO_ROLES' | translate }}
+          }
+        </td>
+        <td>
+          <nz-space class="table-actions" [nzSplit]="spaceSplit" [nzSize]="0">
+            <ng-template #spaceSplit>
+              <nz-divider nzType="vertical"></nz-divider>
+            </ng-template>
+
+            <button
+              *nzSpaceItem
+              nz-button
+              nzType="link"
+              nzSize="small"
+              type="button"
+              (click)="openUserModal(user)"
+            >
+              <nz-icon nzType="nz:edit"></nz-icon>
+            </button>
+            <button
+              *nzSpaceItem
+              nz-button
+              nzType="link"
+              nzSize="small"
+              type="button"
+              (click)="showResetPasswordConfirm(user)"
+            >
+              <nz-icon nzType="nz:reload"></nz-icon>
+            </button>
+            @if (user.enabled) {
+              <button
+                *nzSpaceItem
+                nz-button
+                nzType="link"
+                nzSize="small"
+                type="button"
+                (click)="blockUser(user)"
+              >
+                <nz-icon nzType="nz:lock"></nz-icon>
+              </button>
+            } @else {
+              <button
+                *nzSpaceItem
+                nz-button
+                nzType="link"
+                nzSize="small"
+                type="button"
+                (click)="unblockUser(user)"
+              >
+                <nz-icon nzType="nz:lock-open"></nz-icon>
+              </button>
+            }
+            <button
+              *nzSpaceItem
+              nz-button
+              nzType="link"
+              nzSize="small"
+              type="button"
+              (click)="showDeleteConfirm(user)"
+            >
+              <nz-icon nzType="nz:delete"></nz-icon>
+            </button>
+          </nz-space>
+        </td>
+      </tr>
+    }
+  </tbody>
+</nz-table>

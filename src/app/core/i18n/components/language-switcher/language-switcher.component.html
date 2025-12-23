@@ -1,0 +1,16 @@
+<nz-select
+  nzShowArrow="false"
+  nzBorderless="true"
+  [nzDropdownMatchSelectWidth]="false"
+  [nzCustomTemplate]="languageTemplate"
+  [ngModel]="translationService.currentLanguage()"
+  (ngModelChange)="translationService.switchLanguage($event)"
+>
+  <nz-option nzValue="kk" nzLabel="Қазақша"></nz-option>
+  <nz-option nzValue="ru" nzLabel="Русский"></nz-option>
+  <nz-option nzValue="en" nzLabel="English"></nz-option>
+</nz-select>
+<ng-template #languageTemplate let-selected>
+  <nz-icon nzType="nz:globe" />
+  {{ selected.nzLabel }}
+</ng-template>

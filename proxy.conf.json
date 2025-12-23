@@ -1,0 +1,16 @@
+{
+  "/keycloakProxyApi": {
+    "target": "https://keycloak.dev.yurtech.kz",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/keycloakProxyApi": ""
+    }
+  },
+  "/api": {
+    "target": "https://mis-dev.yurtech.kz",
+    "secure": true,
+    "changeOrigin": true
+  }
+}

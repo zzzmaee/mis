@@ -1,0 +1,47 @@
+<app-language-switcher />
+<div class="login-card">
+  <form nz-form [formGroup]="loginForm" class="login-form" (ngSubmit)="onSubmit()">
+    <div class="login-card__logo-container">
+      <img
+        ngSrc="../../../assets/images/logo.svg"
+        class="login-card__logo"
+        width="62"
+        height="28"
+        alt="Yurt Logo"
+        priority
+      />
+    </div>
+    <nz-form-item>
+      <nz-form-control [nzErrorTip]="'AUTH.FORM.USERNAME.ERROR' | translate">
+        <input
+          type="text"
+          nz-input
+          nzSize="large"
+          formControlName="username"
+          [placeholder]="'AUTH.FORM.USERNAME.PLACEHOLDER' | translate"
+        />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control [nzErrorTip]="'AUTH.FORM.PASSWORD.ERROR' | translate">
+        <input
+          type="password"
+          nz-input
+          nzSize="large"
+          formControlName="password"
+          [placeholder]="'AUTH.FORM.PASSWORD.PLACEHOLDER' | translate"
+        />
+      </nz-form-control>
+    </nz-form-item>
+    <button
+      nz-button
+      nzType="primary"
+      nzSize="large"
+      class="login-card__button"
+      [disabled]="isLoading"
+      [nzLoading]="isLoading"
+    >
+      {{ 'AUTH.LOGIN' | translate }}
+    </button>
+  </form>
+</div>

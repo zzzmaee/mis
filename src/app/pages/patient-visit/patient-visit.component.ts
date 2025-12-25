@@ -1,36 +1,24 @@
-import { CommonModule, isPlatformBrowser, DOCUMENT } from "@angular/common";
-import {
-  Component,
-  ElementRef,
-  OnDestroy,
-  ViewChild,
-  OnInit,
-  ChangeDetectorRef,
-} from "@angular/core";
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from "@angular/forms";
-import { TranslatePipe, TranslateService } from "@ngx-translate/core";
-import { NzCardModule } from "ng-zorro-antd/card";
-import { NzAvatarModule } from "ng-zorro-antd/avatar";
-import { NzTagModule } from "ng-zorro-antd/tag";
-import { NzTimelineModule } from "ng-zorro-antd/timeline";
-import { NzSelectModule } from "ng-zorro-antd/select";
-import { NzInputModule } from "ng-zorro-antd/input";
-import { NzButtonModule } from "ng-zorro-antd/button";
-import { NzAlertModule } from "ng-zorro-antd/alert";
-import { NzInputNumberModule } from "ng-zorro-antd/input-number";
-import { NzDividerModule } from "ng-zorro-antd/divider";
-import { NzDescriptionsModule } from "ng-zorro-antd/descriptions";
-import { NzMessageModule, NzMessageService } from "ng-zorro-antd/message";
-import { NzFormModule } from "ng-zorro-antd/form";
-import { NzIconModule } from "ng-zorro-antd/icon";
-import { NzToolTipModule } from "ng-zorro-antd/tooltip";
-import { NzModalModule } from "ng-zorro-antd/modal";
-import { Inject, PLATFORM_ID } from "@angular/core";
+import {CommonModule, isPlatformBrowser, DOCUMENT} from "@angular/common";
+import {Component, ElementRef, OnDestroy, ViewChild, OnInit, ChangeDetectorRef} from "@angular/core";
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {TranslatePipe, TranslateService} from "@ngx-translate/core";
+import {NzCardModule} from "ng-zorro-antd/card";
+import {NzAvatarModule} from "ng-zorro-antd/avatar";
+import {NzTagModule} from "ng-zorro-antd/tag";
+import {NzTimelineModule} from "ng-zorro-antd/timeline";
+import {NzSelectModule} from "ng-zorro-antd/select";
+import {NzInputModule} from "ng-zorro-antd/input";
+import {NzButtonModule} from "ng-zorro-antd/button";
+import {NzAlertModule} from "ng-zorro-antd/alert";
+import {NzInputNumberModule} from "ng-zorro-antd/input-number";
+import {NzDividerModule} from "ng-zorro-antd/divider";
+import {NzDescriptionsModule} from "ng-zorro-antd/descriptions";
+import {NzMessageModule, NzMessageService} from "ng-zorro-antd/message";
+import {NzFormModule} from "ng-zorro-antd/form";
+import {NzIconModule} from "ng-zorro-antd/icon";
+import {NzToolTipModule} from "ng-zorro-antd/tooltip";
+import {NzModalModule} from "ng-zorro-antd/modal";
+import {Inject, PLATFORM_ID} from "@angular/core";
 import {JitsiService} from '../../shared/services/jitsi.service';
 
 type RiskLevel = "low" | "medium" | "high";
@@ -239,129 +227,129 @@ export class PatientVisitComponent implements OnInit, OnDestroy {
   readonly chronicDiseaseOptions: SelectOption[] = [
     {
       value: "hypertension",
-      label: "medicalData.patientVisit.history.diseases.hypertension",
+      label: "MEDICAL_DATA.PATIENT_VISIT.HISTORY.DISEASES.HYPERTENSION",
     },
     {
       value: "diabetes",
-      label: "medicalData.patientVisit.history.diseases.diabetes",
+      label: "MEDICAL_DATA.PATIENT_VISIT.HISTORY.DISEASES.DIABETES",
     },
     {
       value: "asthma",
-      label: "medicalData.patientVisit.history.diseases.asthma",
+      label: "MEDICAL_DATA.PATIENT_VISIT.HISTORY.DISEASES.ASTHMA",
     },
     {
       value: "ibs",
-      label: "medicalData.patientVisit.history.diseases.ibs",
+      label: "MEDICAL_DATA.PATIENT_VISIT.HISTORY.DISEASES.IBS",
     },
     {
       value: "osteochondrosis",
-      label: "medicalData.patientVisit.history.diseases.osteochondrosis",
+      label: "MEDICAL_DATA.PATIENT_VISIT.HISTORY.DISEASES.OSTEOCHONDROSIS",
     },
   ];
 
   readonly allergyOptions: SelectOption[] = [
     {
       value: "penicillin",
-      label: "medicalData.patientVisit.history.allergiesOptions.penicillin",
+      label: "MEDICAL_DATA.PATIENT_VISIT.HISTORY.ALLERGIES_OPTIONS.PENICILLIN",
     },
     {
       value: "nsaids",
-      label: "medicalData.patientVisit.history.allergiesOptions.nsaids",
+      label: "MEDICAL_DATA.PATIENT_VISIT.HISTORY.ALLERGIES_OPTIONS.NSAIDS",
     },
     {
       value: "seasonal",
-      label: "medicalData.patientVisit.history.allergiesOptions.seasonal",
+      label: "MEDICAL_DATA.PATIENT_VISIT.HISTORY.ALLERGIES_OPTIONS.SEASONAL",
     },
   ];
 
   readonly medicationOptions: SelectOption[] = [
     {
       value: "enalapril",
-      label: "medicalData.patientVisit.history.medicationsOptions.enalapril",
+      label: "MEDICAL_DATA.PATIENT_VISIT.HISTORY.MEDICATIONS_OPTIONS.ENALAPRIL",
     },
     {
       value: "metformin",
-      label: "medicalData.patientVisit.history.medicationsOptions.metformin",
+      label: "MEDICAL_DATA.PATIENT_VISIT.HISTORY.MEDICATIONS_OPTIONS.METFORMIN",
     },
     {
       value: "atorvastatin",
-      label: "medicalData.patientVisit.history.medicationsOptions.atorvastatin",
+      label: "MEDICAL_DATA.PATIENT_VISIT.HISTORY.MEDICATIONS_OPTIONS.ATORVASTATIN",
     },
   ];
 
   readonly surgeryOptions: SelectOption[] = [
     {
       value: "appendectomy_2010",
-      label: "medicalData.patientVisit.history.surgeriesOptions.appendectomy",
+      label: "MEDICAL_DATA.PATIENT_VISIT.HISTORY.SURGERIES_OPTIONS.APPENDECTOMY",
     },
     {
       value: "cholecystectomy_2018",
       label:
-        "medicalData.patientVisit.history.surgeriesOptions.cholecystectomy",
+        "MEDICAL_DATA.PATIENT_VISIT.HISTORY.SURGERIES_OPTIONS.CHOLECYSTECTOMY",
     },
     {
       value: "none",
-      label: "medicalData.patientVisit.history.surgeriesOptions.none",
+      label: "MEDICAL_DATA.PATIENT_VISIT.HISTORY.SURGERIES_OPTIONS.NONE",
     },
   ];
 
   readonly activityOptions: SelectOption[] = [
     {
       value: "low",
-      label: "medicalData.patientVisit.lifestyle.activityOptions.low",
+      label: "MEDICAL_DATA.PATIENT_VISIT.LIFESTYLE.ACTIVITY_OPTIONS.LOW",
     },
     {
       value: "moderate",
-      label: "medicalData.patientVisit.lifestyle.activityOptions.moderate",
+      label: "MEDICAL_DATA.PATIENT_VISIT.LIFESTYLE.ACTIVITY_OPTIONS.MODERATE",
     },
     {
       value: "high",
-      label: "medicalData.patientVisit.lifestyle.activityOptions.high",
+      label: "MEDICAL_DATA.PATIENT_VISIT.LIFESTYLE.ACTIVITY_OPTIONS.HIGH",
     },
   ];
 
   readonly sleepOptions: SelectOption[] = [
     {
       value: "unstable",
-      label: "medicalData.patientVisit.lifestyle.sleepOptions.unstable",
+      label: "MEDICAL_DATA.PATIENT_VISIT.LIFESTYLE.SLEEP_OPTIONS.UNSTABLE",
     },
     {
       value: "stable",
-      label: "medicalData.patientVisit.lifestyle.sleepOptions.stable",
+      label: "MEDICAL_DATA.PATIENT_VISIT.LIFESTYLE.SLEEP_OPTIONS.STABLE",
     },
     {
       value: "insomnia",
-      label: "medicalData.patientVisit.lifestyle.sleepOptions.insomnia",
+      label: "MEDICAL_DATA.PATIENT_VISIT.LIFESTYLE.SLEEP_OPTIONS.INSOMNIA",
     },
   ];
 
   readonly stressOptions: SelectOption[] = [
     {
       value: "low",
-      label: "medicalData.patientVisit.lifestyle.stressOptions.low",
+      label: "MEDICAL_DATA.PATIENT_VISIT.LIFESTYLE.STRESS_OPTIONS.LOW",
     },
     {
       value: "medium",
-      label: "medicalData.patientVisit.lifestyle.stressOptions.medium",
+      label: "MEDICAL_DATA.PATIENT_VISIT.LIFESTYLE.STRESS_OPTIONS.MEDIUM",
     },
     {
       value: "high",
-      label: "medicalData.patientVisit.lifestyle.stressOptions.high",
+      label: "MEDICAL_DATA.PATIENT_VISIT.LIFESTYLE.STRESS_OPTIONS.HIGH",
     },
   ];
 
   readonly nutritionOptions: SelectOption[] = [
     {
       value: "balanced",
-      label: "medicalData.patientVisit.lifestyle.nutritionOptions.balanced",
+      label: "MEDICAL_DATA.PATIENT_VISIT.LIFESTYLE.NUTRITION_OPTIONS.BALANCED",
     },
     {
       value: "irregular",
-      label: "medicalData.patientVisit.lifestyle.nutritionOptions.irregular",
+      label: "MEDICAL_DATA.PATIENT_VISIT.LIFESTYLE.NUTRITION_OPTIONS.IRREGULAR",
     },
     {
       value: "highSugar",
-      label: "medicalData.patientVisit.lifestyle.nutritionOptions.highSugar",
+      label: "MEDICAL_DATA.PATIENT_VISIT.LIFESTYLE.NUTRITION_OPTIONS.HIGH_SUGAR",
     },
   ];
 
@@ -392,7 +380,7 @@ export class PatientVisitComponent implements OnInit, OnDestroy {
       step: 0.1,
       min: 34,
       max: 42,
-      labelKey: "medicalData.patientVisit.vitals.temperature",
+      labelKey: "MEDICAL_DATA.PATIENT_VISIT.VITALS.TEMPERATURE",
     },
     {
       control: "pulse",
@@ -400,7 +388,7 @@ export class PatientVisitComponent implements OnInit, OnDestroy {
       step: 1,
       min: 30,
       max: 220,
-      labelKey: "medicalData.patientVisit.vitals.pulse",
+      labelKey: "MEDICAL_DATA.PATIENT_VISIT.VITALS.PULSE",
     },
     {
       control: "systolic",
@@ -408,7 +396,7 @@ export class PatientVisitComponent implements OnInit, OnDestroy {
       step: 1,
       min: 60,
       max: 260,
-      labelKey: "medicalData.patientVisit.vitals.systolic",
+      labelKey: "MEDICAL_DATA.PATIENT_VISIT.VITALS.SYSTOLIC",
     },
     {
       control: "diastolic",
@@ -416,7 +404,7 @@ export class PatientVisitComponent implements OnInit, OnDestroy {
       step: 1,
       min: 30,
       max: 180,
-      labelKey: "medicalData.patientVisit.vitals.diastolic",
+      labelKey: "MEDICAL_DATA.PATIENT_VISIT.VITALS.DIASTOLIC",
     },
     {
       control: "spo2",
@@ -424,7 +412,7 @@ export class PatientVisitComponent implements OnInit, OnDestroy {
       step: 1,
       min: 70,
       max: 100,
-      labelKey: "medicalData.patientVisit.vitals.spo2",
+      labelKey: "MEDICAL_DATA.PATIENT_VISIT.VITALS.SPO2",
     },
     {
       control: "respiratoryRate",
@@ -432,7 +420,7 @@ export class PatientVisitComponent implements OnInit, OnDestroy {
       step: 1,
       min: 8,
       max: 40,
-      labelKey: "medicalData.patientVisit.vitals.respiratory",
+      labelKey: "MEDICAL_DATA.PATIENT_VISIT.VITALS.RESPIRATORY",
     },
   ];
 
@@ -441,41 +429,41 @@ export class PatientVisitComponent implements OnInit, OnDestroy {
     updatedAt: new Date("2024-11-22T10:05:00"),
     riskScore: 72,
     riskLevel: "medium",
-    summaryKey: "medicalData.patientVisit.ai.summary",
+    summaryKey: "MEDICAL_DATA.PATIENT_VISIT.AI.SUMMARY",
     triggers: [
       {
-        labelKey: "medicalData.patientVisit.ai.triggers.bloodPressure",
-        detailKey: "medicalData.patientVisit.ai.triggers.bloodPressureHint",
+        labelKey: "MEDICAL_DATA.PATIENT_VISIT.AI.TRIGGERS.BLOOD_PRESSURE",
+        detailKey: "MEDICAL_DATA.PATIENT_VISIT.AI.TRIGGERS.BLOOD_PRESSURE_HINT",
         impact: "high",
       },
       {
-        labelKey: "medicalData.patientVisit.ai.triggers.sleepDebt",
-        detailKey: "medicalData.patientVisit.ai.triggers.sleepDebtHint",
+        labelKey: "MEDICAL_DATA.PATIENT_VISIT.AI.TRIGGERS.SLEEP_DEBT",
+        detailKey: "MEDICAL_DATA.PATIENT_VISIT.AI.TRIGGERS.SLEEP_DEBT_HINT",
         impact: "medium",
       },
       {
-        labelKey: "medicalData.patientVisit.ai.triggers.activity",
-        detailKey: "medicalData.patientVisit.ai.triggers.activityHint",
+        labelKey: "MEDICAL_DATA.PATIENT_VISIT.AI.TRIGGERS.ACTIVITY",
+        detailKey: "MEDICAL_DATA.PATIENT_VISIT.AI.TRIGGERS.ACTIVITY_HINT",
         impact: "medium",
       },
     ],
     recommendations: [
-      "medicalData.patientVisit.ai.recommendations.medication",
-      "medicalData.patientVisit.ai.recommendations.monitoring",
-      "medicalData.patientVisit.ai.recommendations.lifestyle",
+      "MEDICAL_DATA.PATIENT_VISIT.AI.RECOMMENDATIONS.MEDICATION",
+      "MEDICAL_DATA.PATIENT_VISIT.AI.RECOMMENDATIONS.MONITORING",
+      "MEDICAL_DATA.PATIENT_VISIT.AI.RECOMMENDATIONS.LIFESTYLE",
     ],
     followUps: [
       {
-        titleKey: "medicalData.patientVisit.ai.followups.abpm",
-        dueKey: "medicalData.patientVisit.ai.followups.abpmDue",
+        titleKey: "MEDICAL_DATA.PATIENT_VISIT.AI.FOLLOWUPS.ABPM",
+        dueKey: "MEDICAL_DATA.PATIENT_VISIT.AI.FOLLOWUPS.ABPM_DUE",
       },
       {
-        titleKey: "medicalData.patientVisit.ai.followups.biochemistry",
-        dueKey: "medicalData.patientVisit.ai.followups.biochemistryDue",
+        titleKey: "MEDICAL_DATA.PATIENT_VISIT.AI.FOLLOWUPS.BIOCHEMISTRY",
+        dueKey: "MEDICAL_DATA.PATIENT_VISIT.AI.FOLLOWUPS.BIOCHEMISTRY_DUE",
       },
       {
-        titleKey: "medicalData.patientVisit.ai.followups.consult",
-        dueKey: "medicalData.patientVisit.ai.followups.consultDue",
+        titleKey: "MEDICAL_DATA.PATIENT_VISIT.AI.FOLLOWUPS.CONSULT",
+        dueKey: "MEDICAL_DATA.PATIENT_VISIT.AI.FOLLOWUPS.CONSULT_DUE",
       },
     ],
   };
@@ -492,7 +480,7 @@ export class PatientVisitComponent implements OnInit, OnDestroy {
     patientSide: "Цех №4 · пост 12",
     paramedicName: "Фельдшер С. Абдурахман",
     device: "Samsung Tab Active 4",
-    noteKey: "medicalData.patientVisit.telemed.note",
+    noteKey: "MEDICAL_DATA.PATIENT_VISIT.TELEMED.NOTE",
   };
 
   constructor(
@@ -611,7 +599,7 @@ export class PatientVisitComponent implements OnInit, OnDestroy {
       })
       .catch(() => {
         this.message.error(
-          this.translate.instant("medicalData.patientVisit.telemed.error"),
+          this.translate.instant("MEDICAL_DATA.PATIENT_VISIT.TELEMED.ERROR"),
         );
       });
   }
@@ -681,7 +669,7 @@ export class PatientVisitComponent implements OnInit, OnDestroy {
       this.lastSavedAt = new Date();
       this.visitForm.markAsPristine();
       this.message.success(
-        this.translate.instant("medicalData.patientVisit.success"),
+        this.translate.instant("MEDICAL_DATA.PATIENT_VISIT.SUCCESS"),
       );
     }, 600);
   }
@@ -704,7 +692,7 @@ export class PatientVisitComponent implements OnInit, OnDestroy {
     }
     if (!this.jitsiReady || !window.JitsiMeetExternalAPI) {
       this.message.warning(
-        this.translate.instant("medicalData.patientVisit.telemed.loading"),
+        this.translate.instant("MEDICAL_DATA.PATIENT_VISIT.TELEMED.LOADING"),
       );
       return;
     }
@@ -713,7 +701,7 @@ export class PatientVisitComponent implements OnInit, OnDestroy {
     this.cdr.detectChanges();
     if (!this.jitsiContainer) {
       this.message.error(
-        this.translate.instant("medicalData.patientVisit.telemed.error"),
+        this.translate.instant("MEDICAL_DATA.PATIENT_VISIT.TELEMED.ERROR"),
       );
       this.showTelemedCall = false;
       return;
@@ -740,9 +728,7 @@ export class PatientVisitComponent implements OnInit, OnDestroy {
       },
       userInfo: {
         displayName:
-          [this.currentUserInfo?.firstName, this.currentUserInfo?.lastName]
-            .filter(Boolean)
-            .join(" ") || this.telemedSession.doctorSide,
+        this.telemedSession.doctorSide,
       },
     };
 

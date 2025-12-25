@@ -6,12 +6,12 @@
   <div class="page-heading">
     <div class="page-heading__actions">
       <div class="saved-indicator">
-        <span>{{ "medicalData.patientVisit.lastSaved" | translate }}:</span>
+        <span>{{ "MEDICAL_DATA.PATIENT_VISIT.LAST_SAVED" | translate }}:</span>
         <strong>
           @if (lastSavedAt) {
             {{ lastSavedAt | date: "dd.MM.yyyy HH:mm" }}
           } @else {
-            {{ "medicalData.patientVisit.notSaved" | translate }}
+            {{ "MEDICAL_DATA.PATIENT_VISIT.NOT_SAVED" | translate }}
           }
         </strong>
       </div>
@@ -23,7 +23,7 @@
           (click)="resetForm()"
           [disabled]="visitForm.pristine && visitForm.untouched"
         >
-          {{ "medicalData.patientVisit.actions.clear" | translate }}
+          {{ "MEDICAL_DATA.PATIENT_VISIT.ACTIONS.CLEAR" | translate }}
         </button>
         <button
           nz-button
@@ -31,10 +31,10 @@
           type="submit"
           [nzLoading]="isSaving"
         >
-          {{ "medicalData.patientVisit.actions.save" | translate }}
+          {{ "MEDICAL_DATA.PATIENT_VISIT.ACTIONS.SAVE" | translate }}
         </button>
         <button nz-button nzType="default" class="ask-ai-btn" type="button">
-          {{ "medicalData.patientVisit.actions.askAi" | translate }}
+          {{ "MEDICAL_DATA.PATIENT_VISIT.ACTIONS.ASK_AI" | translate }}
         </button>
       </div>
     </div>
@@ -44,9 +44,9 @@
     <nz-alert
       nzType="error"
       nzShowIcon
-      [nzMessage]="'medicalData.patientVisit.alert.highRisk' | translate"
+      [nzMessage]="'MEDICAL_DATA.PATIENT_VISIT.ALERT.HIGH_RISK' | translate"
       [nzDescription]="
-        'medicalData.patientVisit.alert.highRiskHint' | translate
+        'MEDICAL_DATA.PATIENT_VISIT.ALERT.HIGH_RISK_HINT' | translate
       "
       class="risk-alert"
     />
@@ -54,9 +54,9 @@
     <nz-alert
       nzType="warning"
       nzShowIcon
-      [nzMessage]="'medicalData.patientVisit.alert.mediumRisk' | translate"
+      [nzMessage]="'MEDICAL_DATA.PATIENT_VISIT.ALERT.MEDIUM_RISK' | translate"
       [nzDescription]="
-        'medicalData.patientVisit.alert.mediumRiskHint' | translate
+        'MEDICAL_DATA.PATIENT_VISIT.ALERT.MEDIUM_RISK_HINT' | translate
       "
       class="risk-alert"
     />
@@ -66,7 +66,7 @@
     <div class="column">
       <nz-card
         class="patient-card"
-        [nzTitle]="'medicalData.patientVisit.patientCard.title' | translate"
+        [nzTitle]="'MEDICAL_DATA.PATIENT_VISIT.PATIENT_CARD.TITLE' | translate"
       >
         <div class="patient-card__avatar-row">
           <nz-avatar
@@ -78,7 +78,8 @@
         <div class="patient-card__risk-row">
           <span class="risk-pill" [attr.data-level]="clinicalRiskLevel">
             {{
-              ("medicalData.patientVisit.risk." + clinicalRiskLevel) | translate
+              ("MEDICAL_DATA.PATIENT_VISIT.RISK." + clinicalRiskLevel.toUpperCase())
+                | translate
             }}
           </span>
         </div>
@@ -95,26 +96,26 @@
         <nz-descriptions nzBordered nzSize="small" [nzColumn]="1">
           <nz-descriptions-item
             [nzTitle]="
-              'medicalData.patientVisit.patientCard.birthDate' | translate
+              'MEDICAL_DATA.PATIENT_VISIT.PATIENT_CARD.BIRTH_DATE' | translate
             "
           >
             {{ patientProfile.birthDate | date: "dd.MM.yyyy" }}
           </nz-descriptions-item>
           <nz-descriptions-item
-            [nzTitle]="'medicalData.patientVisit.patientCard.iin' | translate"
+            [nzTitle]="'MEDICAL_DATA.PATIENT_VISIT.PATIENT_CARD.IIN' | translate"
           >
             {{ patientProfile.iin }}
           </nz-descriptions-item>
           <nz-descriptions-item
             [nzTitle]="
-              'medicalData.patientVisit.patientCard.contact' | translate
+              'MEDICAL_DATA.PATIENT_VISIT.PATIENT_CARD.CONTACT' | translate
             "
           >
             {{ patientProfile.contactPhone }} · {{ patientProfile.email }}
           </nz-descriptions-item>
           <nz-descriptions-item
             [nzTitle]="
-              'medicalData.patientVisit.patientCard.doctor' | translate
+              'MEDICAL_DATA.PATIENT_VISIT.PATIENT_CARD.DOCTOR' | translate
             "
           >
             {{ patientProfile.attendingDoctor }}
@@ -124,7 +125,7 @@
         <div class="tag-section">
           <span class="tag-section__label">
             {{
-              "medicalData.patientVisit.patientCard.riskFactors" | translate
+              "MEDICAL_DATA.PATIENT_VISIT.PATIENT_CARD.RISK_FACTORS" | translate
             }}
           </span>
           <div class="tag-section__tags">
@@ -137,7 +138,7 @@
         <div class="visit-meta">
           <div>
             <span>{{
-              "medicalData.patientVisit.patientCard.lastVisit" | translate
+              "MEDICAL_DATA.PATIENT_VISIT.PATIENT_CARD.LAST_VISIT" | translate
             }}</span>
             <strong>{{
               patientProfile.lastVisit | date: "dd.MM.yyyy HH:mm"
@@ -145,7 +146,7 @@
           </div>
           <div>
             <span>{{
-              "medicalData.patientVisit.patientCard.nextVisit" | translate
+              "MEDICAL_DATA.PATIENT_VISIT.PATIENT_CARD.NEXT_VISIT" | translate
             }}</span>
             <strong>{{
               patientProfile.nextVisit | date: "dd.MM.yyyy HH:mm"
@@ -155,7 +156,7 @@
 
         <nz-divider></nz-divider>
         <div class="timeline-label">
-          {{ "medicalData.patientVisit.patientCard.timeline" | translate }}
+          {{ "MEDICAL_DATA.PATIENT_VISIT.PATIENT_CARD.TIMELINE" | translate }}
         </div>
         <nz-timeline>
           @for (event of visitTimeline; track event.title) {
@@ -174,12 +175,12 @@
 
       <nz-card
         class="lifestyle-card"
-        [nzTitle]="'medicalData.patientVisit.lifestyle.title' | translate"
+        [nzTitle]="'MEDICAL_DATA.PATIENT_VISIT.LIFESTYLE.TITLE' | translate"
       >
         <div class="lifestyle-grid" formGroupName="lifestyle">
           <label class="form-control">
             <span>{{
-              "medicalData.patientVisit.lifestyle.activity" | translate
+              "MEDICAL_DATA.PATIENT_VISIT.LIFESTYLE.ACTIVITY" | translate
             }}</span>
             <nz-select formControlName="activityLevel" nzAllowClear>
               @for (option of activityOptions; track option.value) {
@@ -192,7 +193,7 @@
           </label>
           <label class="form-control">
             <span>{{
-              "medicalData.patientVisit.lifestyle.sleep" | translate
+              "MEDICAL_DATA.PATIENT_VISIT.LIFESTYLE.SLEEP" | translate
             }}</span>
             <nz-select formControlName="sleepQuality" nzAllowClear>
               @for (option of sleepOptions; track option.value) {
@@ -205,7 +206,7 @@
           </label>
           <label class="form-control">
             <span>{{
-              "medicalData.patientVisit.lifestyle.stress" | translate
+              "MEDICAL_DATA.PATIENT_VISIT.LIFESTYLE.STRESS" | translate
             }}</span>
             <nz-select formControlName="stressLevel" nzAllowClear>
               @for (option of stressOptions; track option.value) {
@@ -218,7 +219,7 @@
           </label>
           <label class="form-control">
             <span>{{
-              "medicalData.patientVisit.lifestyle.nutrition" | translate
+              "MEDICAL_DATA.PATIENT_VISIT.LIFESTYLE.NUTRITION" | translate
             }}</span>
             <nz-select formControlName="nutrition" nzAllowClear>
               @for (option of nutritionOptions; track option.value) {
@@ -234,10 +235,10 @@
 
       <nz-card
         class="telemed-card"
-        [nzTitle]="'medicalData.patientVisit.telemed.title' | translate"
+        [nzTitle]="'MEDICAL_DATA.PATIENT_VISIT.TELEMED.TITLE' | translate"
       >
         <p class="telemed-card__subtitle">
-          {{ "medicalData.patientVisit.telemed.subtitle" | translate }}
+          {{ "MEDICAL_DATA.PATIENT_VISIT.TELEMED.SUBTITLE" | translate }}
         </p>
         <div class="telemed-video">
           <div
@@ -245,49 +246,49 @@
             [attr.data-status]="telemedSession.status"
           >
             {{
-              "medicalData.patientVisit.telemed.status." + telemedSession.status
-                | translate
+              ("MEDICAL_DATA.PATIENT_VISIT.TELEMED.STATUS." +
+              telemedSession.status.toUpperCase()) | translate
             }}
           </div>
           <div class="telemed-video__timer">
             {{ telemedSession.scheduledAt | date: "dd MMM, HH:mm" }} ·
             {{ telemedSession.durationMinutes }}
-            {{ "medicalData.patientVisit.telemed.minutes" | translate }}
+            {{ "MEDICAL_DATA.PATIENT_VISIT.TELEMED.MINUTES" | translate }}
           </div>
         </div>
         <div class="telemed-session">
           <div>
-            <span>{{ "medicalData.patientVisit.telemed.platform" | translate }}</span>
+            <span>{{ "MEDICAL_DATA.PATIENT_VISIT.TELEMED.PLATFORM" | translate }}</span>
             <strong>{{ telemedSession.platform }}</strong>
           </div>
           <div>
-            <span>{{ "medicalData.patientVisit.telemed.channel" | translate }}</span>
+            <span>{{ "MEDICAL_DATA.PATIENT_VISIT.TELEMED.CHANNEL" | translate }}</span>
             <strong>{{ telemedSession.channel }}</strong>
           </div>
           <div>
-            <span>{{ "medicalData.patientVisit.telemed.pin" | translate }}</span>
+            <span>{{ "MEDICAL_DATA.PATIENT_VISIT.TELEMED.PIN" | translate }}</span>
             <strong>{{ telemedSession.pin }}</strong>
           </div>
           <div>
-            <span>{{ "medicalData.patientVisit.telemed.doctor" | translate }}</span>
+            <span>{{ "MEDICAL_DATA.PATIENT_VISIT.TELEMED.DOCTOR" | translate }}</span>
             <strong>{{ telemedSession.doctorSide }}</strong>
           </div>
           <div>
-            <span>{{ "medicalData.patientVisit.telemed.patient" | translate }}</span>
+            <span>{{ "MEDICAL_DATA.PATIENT_VISIT.TELEMED.PATIENT" | translate }}</span>
             <strong>{{ telemedSession.patientSide }}</strong>
           </div>
           <div>
-            <span>{{ "medicalData.patientVisit.telemed.paramedic" | translate }}</span>
+            <span>{{ "MEDICAL_DATA.PATIENT_VISIT.TELEMED.PARAMEDIC" | translate }}</span>
             <strong>{{ telemedSession.paramedicName }}</strong>
           </div>
           <div>
-            <span>{{ "medicalData.patientVisit.telemed.device" | translate }}</span>
+            <span>{{ "MEDICAL_DATA.PATIENT_VISIT.TELEMED.DEVICE" | translate }}</span>
             <strong>{{ telemedSession.device }}</strong>
           </div>
         </div>
         <div class="telemed-session__actions">
           <span>
-            {{ "medicalData.patientVisit.telemed.waiting" | translate }}
+            {{ "MEDICAL_DATA.PATIENT_VISIT.TELEMED.WAITING" | translate }}
           </span>
           <button
             nz-button
@@ -296,7 +297,7 @@
             type="button"
             (click)="startTelemedCall()"
           >
-            {{ "medicalData.patientVisit.telemed.startNow" | translate }}
+            {{ "MEDICAL_DATA.PATIENT_VISIT.TELEMED.START_NOW" | translate }}
           </button>
         </div>
         <p class="telemed-note">
@@ -304,10 +305,10 @@
         </p>
         <div class="telemed-actions">
           <button nz-button type="button">
-            {{ "medicalData.patientVisit.telemed.share" | translate }}
+            {{ "MEDICAL_DATA.PATIENT_VISIT.TELEMED.SHARE" | translate }}
           </button>
           <button nz-button nzType="default" nzGhost type="button">
-            {{ "medicalData.patientVisit.telemed.remind" | translate }}
+            {{ "MEDICAL_DATA.PATIENT_VISIT.TELEMED.REMIND" | translate }}
           </button>
         </div>
       </nz-card>
@@ -329,7 +330,7 @@
         <div class="telemed-modal__header">
           <div>
             <h3>
-              {{ "medicalData.patientVisit.telemed.title" | translate }}
+              {{ "MEDICAL_DATA.PATIENT_VISIT.TELEMED.TITLE" | translate }}
             </h3>
             <p>{{ telemedSession.channel }} · {{ telemedSession.platform }}</p>
           </div>
@@ -341,13 +342,13 @@
               type="button"
               (click)="endTelemedCall()"
             >
-              {{ "medicalData.patientVisit.telemed.hangup" | translate }}
+              {{ "MEDICAL_DATA.PATIENT_VISIT.TELEMED.HANGUP" | translate }}
             </button>
             <button nz-button type="button">
-              {{ "medicalData.patientVisit.telemed.share" | translate }}
+              {{ "MEDICAL_DATA.PATIENT_VISIT.TELEMED.SHARE" | translate }}
             </button>
             <button nz-button nzType="default" nzGhost type="button">
-              {{ "medicalData.patientVisit.telemed.remind" | translate }}
+              {{ "MEDICAL_DATA.PATIENT_VISIT.TELEMED.REMIND" | translate }}
             </button>
           </div>
         </div>
@@ -362,22 +363,22 @@
       <nz-card class="history-card">
         <div class="section-heading">
           <div>
-            <h3>{{ "medicalData.patientVisit.history.title" | translate }}</h3>
+            <h3>{{ "MEDICAL_DATA.PATIENT_VISIT.HISTORY.TITLE" | translate }}</h3>
             <p>
-              {{ "medicalData.patientVisit.history.subtitle" | translate }}
+              {{ "MEDICAL_DATA.PATIENT_VISIT.HISTORY.SUBTITLE" | translate }}
             </p>
           </div>
         </div>
         <div class="history-form" formGroupName="history">
           <label class="form-control">
             <span>{{
-              "medicalData.patientVisit.history.chronic" | translate
+              "MEDICAL_DATA.PATIENT_VISIT.HISTORY.CHRONIC" | translate
             }}</span>
             <nz-select
               formControlName="chronicDiseases"
               nzMode="multiple"
               nzPlaceHolder="{{
-                'medicalData.patientVisit.history.selectPlaceholder' | translate
+                'MEDICAL_DATA.PATIENT_VISIT.HISTORY.SELECT_PLACEHOLDER' | translate
               }}"
               nzAllowClear
               [nzMaxTagCount]="3"
@@ -393,13 +394,13 @@
 
           <label class="form-control">
             <span>{{
-              "medicalData.patientVisit.history.allergies" | translate
+              "MEDICAL_DATA.PATIENT_VISIT.HISTORY.ALLERGIES" | translate
             }}</span>
             <nz-select
               formControlName="allergies"
               nzMode="multiple"
               nzPlaceHolder="{{
-                'medicalData.patientVisit.history.selectPlaceholder' | translate
+                'MEDICAL_DATA.PATIENT_VISIT.HISTORY.SELECT_PLACEHOLDER' | translate
               }}"
               nzAllowClear
               [nzMaxTagCount]="3"
@@ -415,13 +416,13 @@
 
           <label class="form-control">
             <span>{{
-              "medicalData.patientVisit.history.medications" | translate
+              "MEDICAL_DATA.PATIENT_VISIT.HISTORY.MEDICATIONS" | translate
             }}</span>
             <nz-select
               formControlName="medications"
               nzMode="multiple"
               nzPlaceHolder="{{
-                'medicalData.patientVisit.history.selectPlaceholder' | translate
+                'MEDICAL_DATA.PATIENT_VISIT.HISTORY.SELECT_PLACEHOLDER' | translate
               }}"
               nzAllowClear
               [nzMaxTagCount]="3"
@@ -437,13 +438,13 @@
 
           <label class="form-control">
             <span>{{
-              "medicalData.patientVisit.history.surgeries" | translate
+              "MEDICAL_DATA.PATIENT_VISIT.HISTORY.SURGERIES" | translate
             }}</span>
             <nz-select
               formControlName="surgeries"
               nzMode="multiple"
               nzPlaceHolder="{{
-                'medicalData.patientVisit.history.selectPlaceholder' | translate
+                'MEDICAL_DATA.PATIENT_VISIT.HISTORY.SELECT_PLACEHOLDER' | translate
               }}"
               nzAllowClear
               [nzMaxTagCount]="2"
@@ -459,14 +460,14 @@
 
           <label class="form-control">
             <span>{{
-              "medicalData.patientVisit.history.notes" | translate
+              "MEDICAL_DATA.PATIENT_VISIT.HISTORY.NOTES" | translate
             }}</span>
             <textarea
               nz-input
               rows="4"
               formControlName="historyNotes"
               [placeholder]="
-                'medicalData.patientVisit.history.notesPlaceholder' | translate
+                'MEDICAL_DATA.PATIENT_VISIT.HISTORY.NOTES_PLACEHOLDER' | translate
               "
             ></textarea>
             @if (isInvalid("history.historyNotes")) {
@@ -475,7 +476,7 @@
           </label>
           <div class="template-chips">
             <span class="template-chips__label">
-              {{ "medicalData.patientVisit.history.quickNotes" | translate }}
+              {{ "MEDICAL_DATA.PATIENT_VISIT.HISTORY.QUICK_NOTES" | translate }}
             </span>
             @for (template of historyTemplates; track template) {
               <button
@@ -496,9 +497,9 @@
       <nz-card class="condition-card">
         <div class="section-heading">
           <div>
-            <h3>{{ "medicalData.patientVisit.current.title" | translate }}</h3>
+            <h3>{{ "MEDICAL_DATA.PATIENT_VISIT.CURRENT.TITLE" | translate }}</h3>
             <p>
-              {{ "medicalData.patientVisit.current.subtitle" | translate }}
+              {{ "MEDICAL_DATA.PATIENT_VISIT.CURRENT.SUBTITLE" | translate }}
             </p>
           </div>
         </div>
@@ -528,14 +529,14 @@
           <div class="text-grid">
             <label class="form-control">
               <span>{{
-                "medicalData.patientVisit.current.complaints" | translate
+                "MEDICAL_DATA.PATIENT_VISIT.CURRENT.COMPLAINTS" | translate
               }}</span>
               <textarea
                 nz-input
                 rows="3"
                 formControlName="complaints"
                 [placeholder]="
-                  'medicalData.patientVisit.current.complaintsPlaceholder'
+                  'MEDICAL_DATA.PATIENT_VISIT.CURRENT.COMPLAINTS_PLACEHOLDER'
                     | translate
                 "
               ></textarea>
@@ -562,14 +563,14 @@
 
             <label class="form-control">
               <span>{{
-                "medicalData.patientVisit.current.objective" | translate
+                "MEDICAL_DATA.PATIENT_VISIT.CURRENT.OBJECTIVE" | translate
               }}</span>
               <textarea
                 nz-input
                 rows="3"
                 formControlName="objectiveStatus"
                 [placeholder]="
-                  'medicalData.patientVisit.current.objectivePlaceholder'
+                  'MEDICAL_DATA.PATIENT_VISIT.CURRENT.OBJECTIVE_PLACEHOLDER'
                     | translate
                 "
               ></textarea>
@@ -596,14 +597,14 @@
 
             <label class="form-control">
               <span>{{
-                "medicalData.patientVisit.current.diagnosis" | translate
+                "MEDICAL_DATA.PATIENT_VISIT.CURRENT.DIAGNOSIS" | translate
               }}</span>
               <textarea
                 nz-input
                 rows="2"
                 formControlName="diagnosis"
                 [placeholder]="
-                  'medicalData.patientVisit.current.diagnosisPlaceholder'
+                  'MEDICAL_DATA.PATIENT_VISIT.CURRENT.DIAGNOSIS_PLACEHOLDER'
                     | translate
                 "
               ></textarea>
@@ -616,14 +617,14 @@
 
             <label class="form-control">
               <span>{{
-                "medicalData.patientVisit.current.plan" | translate
+                "MEDICAL_DATA.PATIENT_VISIT.CURRENT.PLAN" | translate
               }}</span>
               <textarea
                 nz-input
                 rows="3"
                 formControlName="treatmentPlan"
                 [placeholder]="
-                  'medicalData.patientVisit.current.planPlaceholder' | translate
+                  'MEDICAL_DATA.PATIENT_VISIT.CURRENT.PLAN_PLACEHOLDER' | translate
                 "
               ></textarea>
               @if (isInvalid("current.treatmentPlan")) {
@@ -649,14 +650,14 @@
 
             <label class="form-control">
               <span>{{
-                "medicalData.patientVisit.current.recommendations" | translate
+                "MEDICAL_DATA.PATIENT_VISIT.CURRENT.RECOMMENDATIONS" | translate
               }}</span>
               <textarea
                 nz-input
                 rows="2"
                 formControlName="recommendations"
                 [placeholder]="
-                  'medicalData.patientVisit.current.recommendationsPlaceholder'
+                  'MEDICAL_DATA.PATIENT_VISIT.CURRENT.RECOMMENDATIONS_PLACEHOLDER'
                     | translate
                 "
               ></textarea>
@@ -672,11 +673,11 @@
           <div>
             <p class="eyebrow">
               {{
-                "medicalData.patientVisit.ai.assistant"
+                "MEDICAL_DATA.PATIENT_VISIT.AI.ASSISTANT"
                   | translate : { name: aiAnalysis.assistantName }
               }}
             </p>
-            <h3>{{ "medicalData.patientVisit.ai.title" | translate }}</h3>
+            <h3>{{ "MEDICAL_DATA.PATIENT_VISIT.AI.TITLE" | translate }}</h3>
           </div>
           <div class="ai-risk-score">
             <span>{{ aiAnalysis.riskScore }}</span>
@@ -685,13 +686,14 @@
         </div>
         <div class="ai-meta">
           <span>
-            {{ "medicalData.patientVisit.ai.updated" | translate }}:
+            {{ "MEDICAL_DATA.PATIENT_VISIT.AI.UPDATED" | translate }}:
             {{ aiAnalysis.updatedAt | date: "dd.MM HH:mm" }}
           </span>
         </div>
         <div class="risk-pill" [attr.data-level]="aiAnalysis.riskLevel">
           {{
-            ("medicalData.patientVisit.risk." + aiAnalysis.riskLevel) | translate
+            ("MEDICAL_DATA.PATIENT_VISIT.RISK." + aiAnalysis.riskLevel.toUpperCase())
+              | translate
           }}
         </div>
         <p class="ai-summary">
@@ -700,7 +702,7 @@
 
         <div class="ai-section">
           <div class="ai-section__title">
-            {{ "medicalData.patientVisit.ai.triggersTitle" | translate }}
+            {{ "MEDICAL_DATA.PATIENT_VISIT.AI.TRIGGERS_TITLE" | translate }}
           </div>
           <ul class="ai-section__list">
             @for (trigger of aiAnalysis.triggers; track trigger.labelKey) {
@@ -711,8 +713,8 @@
                 </div>
                 <span class="impact-pill" [attr.data-impact]="trigger.impact">
                   {{
-                    ("medicalData.patientVisit.ai.impact." + trigger.impact)
-                      | translate
+                    ("MEDICAL_DATA.PATIENT_VISIT.AI.IMPACT." +
+                    trigger.impact.toUpperCase()) | translate
                   }}
                 </span>
               </li>
@@ -722,7 +724,7 @@
 
         <div class="ai-section">
           <div class="ai-section__title">
-            {{ "medicalData.patientVisit.ai.recommendationsTitle" | translate }}
+            {{ "MEDICAL_DATA.PATIENT_VISIT.AI.RECOMMENDATIONS_TITLE" | translate }}
           </div>
           <ul class="ai-recommendations">
             @for (item of aiAnalysis.recommendations; track item) {
@@ -736,7 +738,7 @@
 
         <div class="ai-section">
           <div class="ai-section__title">
-            {{ "medicalData.patientVisit.ai.followupsTitle" | translate }}
+            {{ "MEDICAL_DATA.PATIENT_VISIT.AI.FOLLOWUPS_TITLE" | translate }}
           </div>
           <ul class="ai-followups">
             @for (item of aiAnalysis.followUps; track item.titleKey) {
@@ -746,7 +748,7 @@
                   <span>{{ item.dueKey | translate }}</span>
                 </div>
                 <button nz-button nzType="link" nzSize="small">
-                  {{ "medicalData.patientVisit.ai.schedule" | translate }}
+                  {{ "MEDICAL_DATA.PATIENT_VISIT.AI.SCHEDULE" | translate }}
                 </button>
               </li>
             }

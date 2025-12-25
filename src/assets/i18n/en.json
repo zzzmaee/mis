@@ -114,5 +114,193 @@
       "ERROR": "Error",
       "WARNING": "Warning"
     }
+  },
+  "MEDICAL_DATA": {
+    "PATIENT_VISIT": {
+      "TITLE": "Patient visit",
+      "SUBTITLE": "Capture history and current condition while you examine the patient.",
+      "ACTIONS": {
+        "SAVE": "Save visit",
+        "CLEAR": "Reset form",
+        "ASK_AI": "Ask AI"
+      },
+      "LAST_SAVED": "Last saved",
+      "NOT_SAVED": "Not saved yet",
+      "SUCCESS": "Visit data saved (demo).",
+      "RISK": {
+        "LOW": "Low risk",
+        "MEDIUM": "Moderate risk",
+        "HIGH": "High risk"
+      },
+      "ALERT": {
+        "HIGH_RISK": "Vitals require immediate attention",
+        "HIGH_RISK_HINT": "Re-check blood pressure, SpO₂ and approve access to the shift.",
+        "MEDIUM_RISK": "Vitals are outside the target range",
+        "MEDIUM_RISK_HINT": "Repeat control in 30 minutes and document the dynamics."
+      },
+      "PATIENT_CARD": {
+        "TITLE": "Patient card",
+        "BIRTH_DATE": "Date of birth",
+        "IIN": "IIN",
+        "CONTACT": "Contacts",
+        "DOCTOR": "Attending physician",
+        "RISK_FACTORS": "Risk factors",
+        "LAST_VISIT": "Last visit",
+        "NEXT_VISIT": "Next control",
+        "TIMELINE": "Recent visits"
+      },
+      "HISTORY": {
+        "TITLE": "History of diseases",
+        "SUBTITLE": "Choose chronic conditions, allergies and previous surgeries.",
+        "CHRONIC": "Chronic diseases",
+        "ALLERGIES": "Allergies",
+        "MEDICATIONS": "Long-term medication",
+        "SURGERIES": "Surgeries",
+        "NOTES": "Current history",
+        "QUICK_NOTES": "Quick notes",
+        "SELECT_PLACEHOLDER": "Select values",
+        "NOTES_PLACEHOLDER": "Describe duration and previous treatment",
+        "DISEASES": {
+          "HYPERTENSION": "Hypertension",
+          "DIABETES": "Type 2 diabetes",
+          "ASTHMA": "Bronchial asthma",
+          "IBS": "Ischemic heart disease",
+          "OSTEOCHONDROSIS": "Osteochondrosis"
+        },
+        "ALLERGIES_OPTIONS": {
+          "PENICILLIN": "Penicillin",
+          "NSAIDS": "NSAIDs",
+          "SEASONAL": "Pollen / seasonal"
+        },
+        "MEDICATIONS_OPTIONS": {
+          "ENALAPRIL": "Enalapril 10 mg twice daily",
+          "METFORMIN": "Metformin 500 mg twice daily",
+          "ATORVASTATIN": "Atorvastatin 20 mg at bedtime"
+        },
+        "SURGERIES_OPTIONS": {
+          "APPENDECTOMY": "Appendectomy",
+          "CHOLECYSTECTOMY": "Cholecystectomy",
+          "NONE": "No surgeries"
+        }
+      },
+      "CURRENT": {
+        "TITLE": "Current condition",
+        "SUBTITLE": "Document complaints, objective status and your plan.",
+        "COMPLAINTS": "Complaints",
+        "OBJECTIVE": "Objective status",
+        "DIAGNOSIS": "Preliminary diagnosis",
+        "PLAN": "Treatment plan",
+        "RECOMMENDATIONS": "Patient recommendations",
+        "COMPLAINTS_PLACEHOLDER": "Example: headache, weakness, numbness",
+        "OBJECTIVE_PLACEHOLDER": "Describe the findings of the physical exam",
+        "DIAGNOSIS_PLACEHOLDER": "Add the working diagnosis",
+        "PLAN_PLACEHOLDER": "List therapy, investigations and follow-up",
+        "RECOMMENDATIONS_PLACEHOLDER": "Lifestyle or safety advice"
+      },
+      "VITALS": {
+        "TITLE": "Vital signs",
+        "TEMPERATURE": "Temperature",
+        "PULSE": "Pulse",
+        "SYSTOLIC": "Systolic BP",
+        "DIASTOLIC": "Diastolic BP",
+        "SPO2": "SpO₂",
+        "RESPIRATORY": "RR"
+      },
+      "LIFESTYLE": {
+        "TITLE": "Lifestyle",
+        "ACTIVITY": "Physical activity",
+        "SLEEP": "Sleep",
+        "STRESS": "Stress level",
+        "NUTRITION": "Nutrition",
+        "ACTIVITY_OPTIONS": {
+          "LOW": "Low",
+          "MODERATE": "Moderate",
+          "HIGH": "High"
+        },
+        "SLEEP_OPTIONS": {
+          "UNSTABLE": "Irregular",
+          "STABLE": "Stable",
+          "INSOMNIA": "Insomnia"
+        },
+        "STRESS_OPTIONS": {
+          "LOW": "Low",
+          "MEDIUM": "Medium",
+          "HIGH": "High"
+        },
+        "NUTRITION_OPTIONS": {
+          "BALANCED": "Balanced",
+          "IRREGULAR": "Irregular",
+          "HIGH_SUGAR": "High sugar"
+        }
+      },
+      "AI": {
+        "TITLE": "AI insights",
+        "ASSISTANT": "Assistant: {{name}}",
+        "UPDATED": "Updated",
+        "SUMMARY": "AI detects unstable blood pressure combined with poor sleep quality. Increase monitoring to confirm stabilization during shifts.",
+        "TRIGGERS_TITLE": "Drivers of risk",
+        "RECOMMENDATIONS_TITLE": "Assistant recommendations",
+        "FOLLOWUPS_TITLE": "Next steps",
+        "SCHEDULE": "Schedule",
+        "IMPACT": {
+          "HIGH": "High",
+          "MEDIUM": "Medium",
+          "LOW": "Low"
+        },
+        "TRIGGERS": {
+          "BLOOD_PRESSURE": "BP variability",
+          "BLOOD_PRESSURE_HINT": "Average 146/92 during the last three shifts.",
+          "SLEEP_DEBT": "Sleep debt",
+          "SLEEP_DEBT_HINT": "Sleep <6 h for four nights increases hypertension risk.",
+          "ACTIVITY": "Low activity",
+          "ACTIVITY_HINT": "Less than 3,000 steps per day, no physiotherapy breaks."
+        },
+        "RECOMMENDATIONS": {
+          "MEDICATION": "Reassess antihypertensive dose and adherence.",
+          "MONITORING": "Arrange unscheduled BP control in 7 days.",
+          "LIFESTYLE": "Improve sleep hygiene and add stretching/walking during lunch."
+        },
+        "FOLLOWUPS": {
+          "ABPM": "24h BP monitoring",
+          "ABPM_DUE": "within 5 days",
+          "BIOCHEMISTRY": "Blood biochemistry (lipids)",
+          "BIOCHEMISTRY_DUE": "by end of week",
+          "CONSULT": "Cardiologist consult",
+          "CONSULT_DUE": "within 10 days"
+        }
+      },
+      "TELEMED": {
+        "TITLE": "Telemed video call",
+        "SUBTITLE": "Track connection readiness and launch the session when both sides are online.",
+        "MINUTES": "min",
+        "PLATFORM": "Platform",
+        "CHANNEL": "Channel",
+        "PIN": "PIN",
+        "DOCTOR": "Doctor",
+        "PATIENT": "Patient side",
+        "PARAMEDIC": "Paramedic",
+        "DEVICE": "Device",
+        "JOIN": "Join call",
+        "HANGUP": "End call",
+        "SHARE": "Share link",
+        "REMIND": "Send reminder",
+        "WAITING": "Paramedic will connect the Samsung pad and start the session.",
+        "START_NOW": "Start video",
+        "LOADING": "Preparing the telemed device… please try again in a moment.",
+        "ERROR": "Could not start the video call. Please try again or contact support.",
+        "NOTE": "Telemed tablets are assigned to paramedics. The patient joins with a Samsung pad under the paramedic’s supervision.",
+        "STATUS": {
+          "SCHEDULED": "Scheduled",
+          "LIVE": "Live",
+          "ENDED": "Ended"
+        },
+        "CONTROLS": {
+          "MIC": "Enable mic",
+          "MUTE": "Mute mic",
+          "CAMERA": "Camera",
+          "FULLSCREEN": "Fullscreen"
+        }
+      }
+    }
   }
 }

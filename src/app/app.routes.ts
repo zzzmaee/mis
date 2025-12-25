@@ -11,7 +11,7 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       {
-        path: 'profile',
+        path: 'patient-visit',
         loadComponent: () => import('./pages/patient-visit/patient-visit.component').then(c => c.PatientVisitComponent),
       },
       {

@@ -62,8 +62,7 @@ export class LoginComponent {
       .subscribe({
         next: () => {
           this.isLoading = false;
-          const returnUrl = this.getReturnUrl();
-          this._router.navigateByUrl(returnUrl);
+          this._router.navigate(['/patient-visit']);
           this._notification.success(this._translate.instant('AUTH.NOTIFICATIONS.SUCCESS'));
         },
         error: () => {
@@ -71,10 +70,5 @@ export class LoginComponent {
           this._notification.error(this._translate.instant('AUTH.NOTIFICATIONS.ERROR'));
         },
       });
-  }
-
-  private getReturnUrl(): string {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('returnUrl') || '/profile';
   }
 }

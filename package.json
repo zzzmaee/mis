@@ -3,13 +3,15 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --open",
+    "start": "ng serve --open --proxy-config proxy.conf.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,
   "dependencies": {
+    "@angular-architects/module-federation": "^20.0.0",
     "@angular/animations": "^19.2.0",
     "@angular/common": "^19.2.0",
     "@angular/compiler": "^19.2.0",
@@ -20,8 +22,12 @@
     "@angular/router": "^19.2.0",
     "@ngx-translate/core": "^16.0.4",
     "@ngx-translate/http-loader": "^16.0.1",
-    "@superset-ui/embedded-sdk": "^0.3.0",
+    "@superset-ui/embedded-sdk": "^0.2.0",
+    "apexcharts": "^5.3.6",
+    "echarts": "^5.6.0",
+    "ng-apexcharts": "^1.17.1",
     "ng-zorro-antd": "^19.0.2",
+    "ngx-echarts": "^19.0.0",
     "rxjs": "~7.8.0",
     "tailwindcss": "^3.4.1",
     "tslib": "^2.3.0",
@@ -38,6 +44,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "ngx-build-plus": "^20.0.0",
     "typescript": "~5.7.2"
   }
 }

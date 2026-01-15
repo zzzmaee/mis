@@ -1,0 +1,133 @@
+::ng-deep .text-primary-blue {
+  color: #009ccd;
+}
+::ng-deep .text-primary-red {
+  color: #ff4d4f;
+}
+::ng-deep :root {
+  --primary: #009ccd;
+  --blue-800: #009ccd;
+  --blue-200: #eef5ff;
+  --gray-200: #f1f3f7;
+  --gray-600: #d9d9d9;
+  --green-800: #27ae60;
+  --red-200: #fff6ed;
+  --red-600: #eb5757;
+  --red-800: #ff4d4f;
+  --neutral-400: #92a2b4;
+  --neutral-600: #4b6889;
+  --neutral-800: #071c3b;
+  color: var(--neutral-800);
+}
+
+::ng-deep .ant-table-thead > tr > th {
+  color: #071c3b;
+}
+::ng-deep tbody .ant-table-row {
+  height: 90px;
+}
+::ng-deep thead .ant-table-row {
+  height: 55px;
+}
+::ng-deep .ant-table-tbody > tr > td {
+  border-bottom: 1px solid var(--gray-200);
+}
+
+::ng-deep .text-primary {
+  color: var(--primary);
+}
+::ng-deep .text-secondary {
+  color: var(--neutral-600);
+}
+
+@keyframes enter {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes exit {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+::view-transition-old(root) {
+  animation: exit 2s ease 0s 1 normal forwards;
+}
+
+::view-transition-new(root) {
+  animation: enter 3s ease 0s 1 normal forwards;
+}
+
+::ng-deep .ant-progress-inner {
+  border-radius: 2px;
+}
+
+::ng-deep .ant-progress-bg {
+  border-radius: 2px !important;
+}
+
+::ng-deep .ant-tag {
+  margin: 0 !important;
+}
+
+::ng-deep .ant-progress-circle .ant-progress-inner {
+  width: 100% !important;
+  max-width: 200px;
+  height: auto !important;
+  aspect-ratio: 15 / 8 !important;
+  margin-inline: 5%;
+}
+
+::ng-deep .ant-progress-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+
+/* Стилизация текста внутри кругового прогресса */
+::ng-deep .ant-progress-text {
+  font-size: 20px !important; /* Увеличиваем размер процента */
+  font-weight: 500;
+  color: #071C3B !important;
+  top: 74% !important;
+}
+
+::ng-deep .ant-progress-circle-trail {
+  stroke-linecap: round;
+}
+
+/* Добавляем подпись "допусков" под процентами */
+::ng-deep .ant-progress-text::after {
+  content: 'допусков';
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #4B6889;
+  margin-top: 4px;
+}
+
+::ng-deep .custom-card.ant-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+::ng-deep .custom-card.ant-card .ant-card-body {
+  flex: 1 1 auto;
+}

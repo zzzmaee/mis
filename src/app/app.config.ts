@@ -23,6 +23,20 @@ import {NZ_DATE_CONFIG, provideNzI18n, ru_RU} from 'ng-zorro-antd/i18n';
 import {FormsModule} from '@angular/forms';
 import {NzNotificationModule} from 'ng-zorro-antd/notification';
 
+import {provideEchartsCore} from 'ngx-echarts';
+import * as echarts from 'echarts/core';
+import {
+  BarChart,
+  LineChart,
+  PieChart,
+} from 'echarts/charts';
+import {
+  TooltipComponent,
+  GridComponent,
+  LegendComponent,
+} from 'echarts/components';
+import {CanvasRenderer} from 'echarts/renderers';
+
 registerLocaleData(ru);
 registerLocaleData(kk);
 registerLocaleData(en);
@@ -30,6 +44,16 @@ registerLocaleData(en);
 function initializeIcons(iconService: IconRegisterService) {
   return () => iconService.registerIcons();
 }
+
+echarts.use([
+  BarChart,
+  LineChart,
+  PieChart,
+  GridComponent,
+  TooltipComponent,
+  LegendComponent,
+  CanvasRenderer,
+]);
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -40,6 +64,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(FormsModule, NzNotificationModule),
     provideAnimationsAsync(),
     provideHttpClient(withInterceptors([authInterceptor])),
+    provideEchartsCore({echarts}),
     TRANSLATION_PROVIDERS,
     {
       provide: APP_INITIALIZER,

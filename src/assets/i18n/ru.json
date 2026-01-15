@@ -18,9 +18,15 @@
   },
   "SIDEBAR": {
     "MENU": {
+      "DASHBOARD": "Панель управления",
       "PROFILE": "Профиль",
       "REPORTS": "Отчеты",
       "USERS": "Пользователи",
+      "MEDICAL_DATA": "Мед. данные",
+      "PATIENT_VISIT": "Прием пациента",
+      "TELEMED": "Телемед",
+      "ASMO": "Асмо",
+      "ARM": "АРМ врача",
       "LOGS": "Логи",
       "LOGOUT": "Выйти",
       "EXPAND_SIDEBAR": "Развернуть боковую панель",
@@ -301,6 +307,31 @@
           "FULLSCREEN": "Во весь экран"
         }
       }
+    }
+  },
+  "DASHBOARD": {
+    "TODAY": "Сегодня",
+    "SEVEN_DAY": "7 дней",
+    "MONTH": "Месяц",
+    "YEAR": "Год",
+    "PASSED": "Сдано",
+    "UNPASSED": "Не сдано",
+    "REASON": "Причины",
+    "TOP5": "Топ 5",
+    "TABLE": {
+      "NAME": "Имя",
+      "DATE": "Дата",
+      "ORGANIZATION": "Организация",
+      "RESULT": "Результат"
+    },
+    "CHARTS": {
+      "NARCO": "",
+      "ALCO": "Алкогольное опьянение",
+      "TEMPERATURE": "Повышенная температура",
+      "PRESSURE": "Повышенное давление",
+      "PULSE": "Повышенный пульс",
+      "PUPILLOMETER": "Наркотическое опьянение",
+      "COMPLAINTS": "Жалобы"
     }
   }
 }

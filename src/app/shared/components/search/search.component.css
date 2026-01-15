@@ -1,0 +1,8 @@
+::ng-deep .ant-input-group-addon {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+::ng-deep button {
+  display: grid;
+  align-items: center;
+}

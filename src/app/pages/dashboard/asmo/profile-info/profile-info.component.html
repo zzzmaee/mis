@@ -1,0 +1,15 @@
+<div nz-flex [nzJustify]="'flex-start'">
+  <nz-avatar
+    [nzShape]="'square'"
+    [nzSize]="64"
+    [nzIcon]="'user'"
+    nzSrc="/assets/avatars/default.svg"
+    style="margin-right: 16px"
+  ></nz-avatar>
+  <div nz-flex [nzJustify]="'center'" [nzVertical]="true">
+    <div class="text-primary">
+      {{ selected?.employee?.firstname + " " + selected?.employee?.lastname }}
+    </div>
+    <div>{{ selected?.employee?.organization?.name || "--" }}</div>
+  </div>
+</div>

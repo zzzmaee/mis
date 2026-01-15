@@ -1,4 +1,5 @@
-@table-border-color: @neutral-3;
+@table-border-color: #f1f3f780;
+@table-row-hover-bg: #f1f3f7;
 
 .@{table-prefix-cls} {
   table {
@@ -25,6 +26,14 @@
         &::before {
           display: none;
         }
+      }
+    }
+  }
+
+  &-tbody {
+    > tr:nth-child(even) {
+      > td {
+        background-color: @table-border-color;
       }
     }
   }

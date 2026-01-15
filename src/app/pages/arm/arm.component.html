@@ -1,0 +1,92 @@
+<div class="mb-4 flex justify-between">
+  <form nz-form autocomplete="off" [formGroup]="filterForm">
+      <nz-form-control>
+        <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+          <input type="text" class="search-input" nz-input [placeholder]="'ARM.FILTER.CARD_NAME' | translate" />
+        </nz-input-group>
+        <ng-template #suffixIconButton>
+          <button nz-button nzSearch><nz-icon nzType="search" /></button>
+        </ng-template>
+      </nz-form-control>
+  </form>
+  <button nz-button nzType="primary">
+    {{ 'ARM.CREATE_MEDICAL_CARD' | translate }}
+  </button>
+</div>
+<nz-card [nzBodyStyle]="{padding: '16px 24px'}">
+<nz-table
+  #armTable
+  [nzData]="arms()"
+  [nzLoading]="isLoading()"
+  [nzShowPagination]="true"
+  [nzPageSize]="10"
+>
+  <thead>
+  <tr>
+    <th>{{ 'ARM.TABLE.MEDICAL_CARD' | translate }}</th>
+    <th colSpan="6">{{ 'ARM.TABLE.LATEST_MEASUREMENTS' | translate }}</th>
+  </tr>
+  </thead>
+  <tbody>
+    @for (arm of armTable.data; track arm) {
+      <tr>
+        <td>
+          <div class="flex gap-4">
+            <nz-avatar nzShape="square" [nzSize]="64" [nzSrc]="arm.avatar"></nz-avatar>
+            <div style="align-self: center">
+              <div class="flex gap-3 text-base font-semibold" style="color: var(--color-primary)">
+                {{ arm.username }}
+                <nz-icon nzType="nz:phone"></nz-icon>
+              </div>
+              <div>
+                {{ arm.gender }}, {{ arm.years }} лет
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          Давление
+          <div>
+            <nz-icon [nzType]="arm.pressure.high ? 'nz:trend-up' : 'nz:trend-down'"></nz-icon>
+            {{ arm.pressure.systolic }}/{{ arm.pressure.diastolic }} мм. рт. ст.
+          </div>
+        </td>
+        <td>
+          Холестерин
+          <div>
+            <nz-icon [nzType]="arm.cholesterol.high ? 'nz:trend-up' : 'nz:trend-down'"></nz-icon>
+            {{ arm.cholesterol.value }}.0 ммоль/л
+          </div>
+        </td>
+        <td>
+          Кетон
+          <div>
+            <nz-icon [nzType]="arm.ketone.high ? 'nz:arrow-up' : 'nz:arrow-down'"></nz-icon>
+            {{ arm.ketone.value }}.0 ммоль/л
+          </div>
+        </td>
+        <td>
+          Вес
+          <div>
+            <nz-icon [nzType]="arm.weight.high ? 'nz:arrow-up' : 'nz:arrow-down'"></nz-icon>
+            {{ arm.weight.value }} кг
+          </div>
+        </td>
+        <td>
+          Кислород
+          <div>
+            <nz-icon [nzType]="arm.oxygen.high ? 'nz:check' : 'nz:check'"></nz-icon>
+            {{ arm.oxygen.percent }}% {{ arm.oxygen.pulse }} уд/мин
+          </div>
+        </td>
+        <td>
+          Температура
+          <div>
+            <nz-icon [nzType]="arm.temperature.high ? 'nz:check' : 'nz:check'"></nz-icon>
+            {{ arm.temperature.value }} °C
+          </div>
+      </tr>
+    }
+  </tbody>
+</nz-table>
+</nz-card>

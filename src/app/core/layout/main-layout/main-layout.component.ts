@@ -63,33 +63,6 @@ export class MainLayoutComponent {
     });
   }
 
-  protected getActiveTitleKey(): string {
-    const activeItem = this.menuConfig.menuItems.find((item) => item.path === this._activePath);
-
-    if (
-      activeItem &&
-      this._activeSubPath &&
-      activeItem.children &&
-      activeItem.children.length > 0
-    ) {
-      const activeChild = activeItem.children.find((child) => {
-        if (!child.path) {
-          return false;
-        }
-        if (child.path.startsWith(':')) {
-          return true;
-        }
-        return child.path === this._activeSubPath;
-      });
-
-      if (activeChild) {
-        return activeChild.titleKey;
-      }
-    }
-
-    return activeItem ? activeItem.titleKey : '';
-  }
-
   private _updateActivePaths(): void {
     const segments = this._router.url.split('/');
     if (segments.length > 2) {

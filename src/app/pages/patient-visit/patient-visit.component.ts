@@ -199,7 +199,7 @@ export class PatientVisitComponent implements OnInit, OnDestroy {
     lastVisit: new Date("2024-11-22T09:40:00"),
     nextVisit: new Date("2025-01-15T09:00:00"),
     riskFactors: ["Гипертония II ст.", "Сидячая работа", "Низкая активность"],
-    photo: "assets/avatars/10-3.jpg",
+    photo: "assets/images/avatars/10-3.jpg",
   };
 
   readonly visitTimeline: PatientVisitTimelineEvent[] = [

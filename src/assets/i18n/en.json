@@ -18,9 +18,15 @@
   },
   "SIDEBAR": {
     "MENU": {
+      "DASHBOARD": "Dashboard",
       "PROFILE": "Profile",
       "REPORTS": "Reports",
       "USERS": "Users",
+      "MEDICAL_DATA": "Medical data",
+      "PATIENT_VISIT": "Patient visit",
+      "TELEMED": "Telemed",
+      "ASMO": "Asmo",
+      "ARM": "Doctor's ARM",
       "LOGS": "Logs",
       "LOGOUT": "Logout",
       "EXPAND_SIDEBAR": "Expand sidebar",
@@ -301,6 +307,31 @@
           "FULLSCREEN": "Fullscreen"
         }
       }
+    }
+  },
+  "DASHBOARD": {
+    "TODAY": "Today",
+    "SEVEN_DAY": "7 days",
+    "MONTH": "Month",
+    "YEAR": "Year",
+    "PASSED": "Passed",
+    "UNPASSED": "Failed",
+    "REASON": "Reasons",
+    "TOP5": "Top 5",
+    "TABLE": {
+      "NAME": "Name",
+      "DATE": "Date",
+      "ORGANIZATION": "Organization",
+      "RESULT": "Result"
+    },
+    "CHARTS": {
+      "NARCO": "",
+      "ALCO": "Alcohol intoxication",
+      "TEMPERATURE": "Elevated temperature",
+      "PRESSURE": "Elevated blood pressure",
+      "PULSE": "Elevated pulse",
+      "PUPILLOMETER": "Narcotic intoxication",
+      "COMPLAINTS": "Complaints"
     }
   }
 }

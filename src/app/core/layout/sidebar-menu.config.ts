@@ -21,8 +21,13 @@ export interface SidebarMenuItem {
 export class SidebarMenuConfig {
   public readonly menuItems: SidebarMenuItem[] = [
     {
-      titleKey: 'SIDEBAR.MENU.MEDICAL_DATA',
+      path: 'dashboard',
+      titleKey: 'SIDEBAR.MENU.DASHBOARD',
       icon: 'nz:circles-four',
+    },
+    {
+      titleKey: 'SIDEBAR.MENU.MEDICAL_DATA',
+      icon: 'nz:article',
       children: [
         {
           path: 'patient-visit',
@@ -40,5 +45,21 @@ export class SidebarMenuConfig {
       titleKey: 'SIDEBAR.MENU.USERS',
       icon: 'nz:user-list',
     },
+    {
+      path: 'telemed',
+      titleKey: 'SIDEBAR.MENU.TELEMED',
+      icon: 'nz:ambulance',
+      children: [
+        {
+          path: 'arm',
+          titleKey: 'SIDEBAR.MENU.ARM',
+        }
+      ]
+    },
+    // {
+    //   path: 'asmo',
+    //   titleKey: 'SIDEBAR.MENU.ASMO',
+    //   icon: 'nz:pulse',
+    // }
   ];
 }

@@ -1,7 +1,7 @@
 <nz-layout>
   <nz-sider [nzCollapsed]="isMenuCollapsed()" [nzCollapsedWidth]="56" nzWidth="220px">
     <div class="sider-header">
-      <img src="assets/images/logo-icon.svg" alt="Yurt logo">
+      <img src="../../../../assets/images/icons/logo-icon.svg" alt="Yurt logo">
       <button
         nz-button
         nzType="text"
@@ -50,8 +50,11 @@
                 @for (child of item.children; track child) {
                   @if (child.path) {
                     <li nz-menu-item nzMatchRouter="true">
+                      @if (child.icon) {
+                        <nz-icon [nzType]="child.icon"></nz-icon>
+                      }
                       <span>
-                        <a [routerLink]="['', child.path]">
+                        <a [routerLink]="item.path ? ['', item.path, child.path] : ['', child.path]">
                           {{ child.titleKey | translate }}
                         </a>
                       </span>
@@ -92,7 +95,7 @@
   <nz-layout>
     <nz-header>
       <h1>
-        {{ getActiveTitleKey() | translate }}
+        Медицинская Информационная Система
       </h1>
       <app-language-switcher/>
     </nz-header>

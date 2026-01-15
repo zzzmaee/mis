@@ -1,0 +1,167 @@
+<div nz-row [nzGutter]="14" style="margin-bottom: 24px">
+  <div nz-col nzSpan="6">
+    <nz-card class="card-pmo" nzTitle="{{ 'DASHBOARD.TODAY' | translate }}">
+      <div nz-flex nzJustify="space-between" style="padding-bottom: 20px">
+        <div>{{ "DASHBOARD.PASSED" | translate }}</div>
+        <div class="text-green">{{ totalExamsDwmy.day_succ }}</div>
+      </div>
+      <div nz-flex nzJustify="space-between">
+        <div>{{ "DASHBOARD.UNPASSED" | translate }}</div>
+        <div class="text-red">{{ totalExamsDwmy.day_fail }}</div>
+      </div>
+    </nz-card>
+  </div>
+
+  <div nz-col nzSpan="6">
+    <nz-card class="card-pmo" nzTitle="{{ 'DASHBOARD.SEVEN_DAY' | translate }}">
+      <div nz-flex nzJustify="space-between" style="padding-bottom: 20px">
+        <div>{{ "DASHBOARD.PASSED" | translate }}</div>
+        <div class="text-green">{{ totalExamsDwmy.week_succ }}</div>
+      </div>
+      <div nz-flex nzJustify="space-between">
+        <div>{{ "DASHBOARD.UNPASSED" | translate }}</div>
+        <div class="text-red">{{ totalExamsDwmy.week_fail }}</div>
+      </div>
+    </nz-card>
+  </div>
+
+  <div nz-col nzSpan="6">
+    <nz-card class="card-pmo" nzTitle="{{ 'DASHBOARD.MONTH' | translate }}">
+      <div nz-flex nzJustify="space-between" style="padding-bottom: 20px">
+        <div>{{ "DASHBOARD.PASSED" | translate }}</div>
+        <div class="text-green">{{ totalExamsDwmy.month_succ }}</div>
+      </div>
+      <div nz-flex nzJustify="space-between">
+        <div>{{ "DASHBOARD.UNPASSED" | translate }}</div>
+        <div class="text-red">{{ totalExamsDwmy.month_fail }}</div>
+      </div>
+    </nz-card>
+  </div>
+
+  <div nz-col nzSpan="6">
+    <nz-card class="card-pmo" nzTitle="{{ 'DASHBOARD.YEAR' | translate }}">
+      <div nz-flex nzJustify="space-between" style="padding-bottom: 20px">
+        <div>{{ "DASHBOARD.PASSED" | translate }}</div>
+        <div class="text-green">{{ totalExamsDwmy.year_succ }}</div>
+      </div>
+      <div nz-flex nzJustify="space-between">
+        <div>{{ "DASHBOARD.UNPASSED" | translate }}</div>
+        <div class="text-red">{{ totalExamsDwmy.year_fail }}</div>
+      </div>
+    </nz-card>
+  </div>
+</div>
+
+<div nz-row [nzGutter]="24">
+  <div nz-col nzSpan="24">
+    <nz-card
+      class="card-pmo"
+      nzTitle="{{ 'DASHBOARD.REASON' | translate }}"
+      [nzExtra]="filterTemplate"
+    >
+      @if (!loading) {
+        <apx-chart
+          [series]="chartOptions.series"
+          [chart]="chartOptions.chart"
+          [labels]="chartOptions.labels"
+          [dataLabels]="chartOptions.dataLabels"
+          [colors]="chartOptions.colors"
+          [plotOptions]="chartOptions.plotOptions"
+          [legend]="chartOptions.legend"
+        ></apx-chart>
+      }
+    </nz-card>
+    <ng-template #filterTemplate>
+      <a nz-dropdown [nzDropdownMenu]="menu">
+        <nz-icon nzType="nz:filter" style="font-size: 16px"></nz-icon>
+      </a>
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu nzSelectable>
+          <li
+            nz-menu-item
+            [nzSelected]="filterMonth == 1"
+            (click)="selectFilter(1)"
+          >
+            1 месяц
+          </li>
+          <li
+            nz-menu-item
+            [nzSelected]="filterMonth == 3"
+            (click)="selectFilter(3)"
+          >
+            3 месяца
+          </li>
+          <li
+            nz-menu-item
+            [nzSelected]="filterMonth == 6"
+            (click)="selectFilter(6)"
+          >
+            6 месяцев
+          </li>
+          <li
+            nz-menu-item
+            [nzSelected]="filterMonth == 12"
+            (click)="selectFilter(12)"
+          >
+            1 год
+          </li>
+        </ul>
+      </nz-dropdown-menu>
+    </ng-template>
+  </div>
+
+<!--  <div nz-col nzSpan="12">-->
+<!--    <nz-card-->
+<!--      class="card-pmo"-->
+<!--      nzTitle="{{ 'DASHBOARD.TOP5' | translate }}"-->
+<!--      [nzExtra]="filterOrgsTemplate"-->
+<!--    >-->
+<!--      @for (i of topOrgs; track i) {-->
+<!--        <div nz-row>-->
+<!--          <div class="content-info">-->
+<!--            <span class="left">{{ i.organizationName }}</span>-->
+<!--            <span class="right">{{ i.failCount }} </span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      }-->
+<!--    </nz-card>-->
+<!--  </div>-->
+
+  <ng-template #filterOrgsTemplate>
+    <a nz-dropdown [nzDropdownMenu]="menu">
+      <nz-icon nzType="nz:filter" style="font-size: 16px"></nz-icon>
+    </a>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <ul nz-menu nzSelectable>
+        <li
+          nz-menu-item
+          [nzSelected]="filterOrgs == 1"
+          (click)="selectFilterOrgs(1)"
+        >
+          1 месяц
+        </li>
+        <li
+          nz-menu-item
+          [nzSelected]="filterOrgs == 3"
+          (click)="selectFilterOrgs(3)"
+        >
+          3 месяца
+        </li>
+        <li
+          nz-menu-item
+          [nzSelected]="filterOrgs == 6"
+          (click)="selectFilterOrgs(6)"
+        >
+          6 месяцев
+        </li>
+        <li
+          nz-menu-item
+          [nzSelected]="filterOrgs == 12"
+          (click)="selectFilterOrgs(12)"
+        >
+          1 год
+        </li>
+      </ul>
+    </nz-dropdown-menu>
+  </ng-template>
+</div>

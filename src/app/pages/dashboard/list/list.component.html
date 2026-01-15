@@ -1,0 +1,65 @@
+<ng-template #loading>
+  <span nz-icon nzType="loading" class="ant-spin-dot"></span>
+</ng-template>
+
+<nz-select
+  [(ngModel)]="fails"
+  (ngModelChange)="selectChange($event)"
+  class="select-list"
+>
+  <nz-option nzValue="sis,dia" nzLabel="Давление"></nz-option>
+  <nz-option nzValue="temperature" nzLabel="Температура"></nz-option>
+  <nz-option nzValue="pupillometer" nzLabel="Пупиллометр"></nz-option>
+  <nz-option nzValue="pulse" nzLabel="Пульс"></nz-option>
+  <nz-option nzValue="alco" nzLabel="Алкогольное опьянение"></nz-option>
+</nz-select>
+<nz-card class="list-card">
+  <nz-table
+    #basicTable
+    [nzData]="listOfData"
+    [nzFrontPagination]="false"
+    [nzLoadingIndicator]="loading"
+    [nzLoading]="tableLoading"
+    [nzTotal]="total"
+    [nzPageSize]="pageSize"
+    [nzPageIndex]="pageIndex"
+    (nzQueryParams)="search($event)"
+    [nzScroll]="{ y: 'calc(100vh - 400px)' }"
+  >
+    <thead>
+      <tr>
+        <th>
+          {{ "DASHBOARD.TABLE.NAME" | translate }}
+        </th>
+        <th>
+          {{ "DASHBOARD.TABLE.DATE" | translate }}
+        </th>
+        <th>
+          {{ "DASHBOARD.TABLE.ORGANIZATION" | translate }}
+        </th>
+        <th>
+          {{ "DASHBOARD.TABLE.RESULT" | translate }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (data of basicTable.data; track data) {
+        <tr>
+          <td>
+            {{ data?.employee?.firstname + " " + data?.employee?.lastname }}
+          </td>
+          <td>
+            {{
+              data.getCreatedAtHourAndMinute() +
+                " - " +
+                data.getClosedAtHourAndMinute()
+            }}
+            <br />
+          </td>
+          <td>{{ data?.employee?.organization?.name || "-" }}</td>
+          <td>{{ getResult(data?.results) }}</td>
+        </tr>
+      }
+    </tbody>
+  </nz-table>
+</nz-card>

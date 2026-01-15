@@ -1,0 +1,154 @@
+<nz-modal
+  [(nzVisible)]="visible"
+  nzTitle="The first Modal"
+  (nzOnCancel)="handleCancel()"
+  nzWidth="800px"
+>
+  <ng-container *nzModalContent>
+    <div class="flex-item">
+      <div nz-row>
+        <div
+          nz-col
+          nzSpan="12"
+          class="filter-block"
+          style="padding-right: 20px"
+        >
+          <p class="label">{{ "asmo.filter.date" | translate }}</p>
+          <nz-range-picker
+            class="input"
+            [(ngModel)]="date"
+            (ngModelChange)="handleDateChange($event)"
+          ></nz-range-picker>
+        </div>
+
+        <div nz-col nzSpan="12" class="filter-block" style="padding-left: 20px">
+          <p class="label">{{ "asmo.filter.department" | translate }}</p>
+          <nz-select
+            class="input"
+            nzMode="multiple"
+            [nzPlaceHolder]="'asmo.filter.department' | translate"
+            nzAllowClear
+            nzShowSearch
+            nzServerSearch
+            [(ngModel)]="organizationsId"
+            (nzOnSearch)="organizationSearch($event)"
+          >
+            @if (!loading) {
+              @for (o of organizations; track o) {
+                <nz-option [nzValue]="o.id" [nzLabel]="o.name"></nz-option>
+              }
+            } @else {
+              <nz-option nzDisabled nzCustomContent>
+                <span nz-icon nzType="loading" class="loading-icon"></span>
+                Loading Data...
+              </nz-option>
+            }
+          </nz-select>
+        </div>
+      </div>
+
+      <div nz-row>
+        <div nz-col nzSpan="24" class="filter-block">
+          <p class="label">
+            {{ "asmo.filter.diagnosis" | translate }}
+          </p>
+          <nz-select
+            class="input"
+            nzMode="multiple"
+            nzAllowClear
+            nzShowSearch
+            nzServerSearch
+            [nzMaxTagCount]="0"
+            [nzPlaceHolder]="'asmo.filter.diagnosis' | translate"
+            [(ngModel)]="diagnosisId"
+            (nzOnSearch)="diagnosisSearch($event)"
+          >
+            @if (!loading) {
+              @for (o of diagnosis; track o) {
+                <nz-option [nzValue]="o.id" [nzLabel]="o.titleRu"></nz-option>
+              }
+            } @else {
+              <nz-option nzDisabled nzCustomContent>
+                <span nz-icon nzType="loading" class="loading-icon"></span>
+                Loading Data...
+              </nz-option>
+            }
+          </nz-select>
+        </div>
+      </div>
+    </div>
+    <div nz-flex nzJustify="space-between" nzGap="large">
+      <div>
+        <p style="margin-left: 8px">{{ "asmo.filter.status" | translate }}</p>
+        <nz-checkbox-wrapper
+          style="width: 100%"
+          (nzOnChange)="statusCheck($event)"
+          nz-flex
+          nzVertical="true"
+        >
+          <label nz-checkbox nzValue="success">{{
+            "asmo.filter.success" | translate
+          }}</label>
+          <label nz-checkbox nzValue="retake">{{
+            "asmo.filter.retake" | translate
+          }}</label>
+          <label nz-checkbox nzValue="fail">{{
+            "asmo.filter.failed" | translate
+          }}</label>
+          <label nz-checkbox nzValue="cancel">{{
+            "asmo.filter.cancel" | translate
+          }}</label>
+        </nz-checkbox-wrapper>
+      </div>
+      <div>
+        <p style="margin-left: 8px">
+          {{ "asmo.filter.indication" | translate }}
+        </p>
+
+        <nz-checkbox-wrapper (nzOnChange)="failCheck($event)">
+          <div nz-flex nzJustify="flex-end">
+            <div nz-flex nzVertical="true" style="flex-grow: 0">
+              <label nz-checkbox nzValue="alco">{{
+                "asmo.filter.reason.alco" | translate
+              }}</label>
+              <label nz-checkbox nzValue="pressureMax">{{
+                "asmo.filter.reason.highpressure" | translate
+              }}</label>
+              <label nz-checkbox nzValue="pressureMin">{{
+                "asmo.filter.reason.lowpressure" | translate
+              }}</label>
+              <label nz-checkbox nzValue="temperature">{{
+                "asmo.filter.reason.temperature" | translate
+              }}</label>
+              <label nz-checkbox nzValue="complaints">{{
+                "asmo.filter.reason.complaints" | translate
+              }}</label>
+            </div>
+            <div nz-flex nzVertical="true" style="flex-grow: 0">
+              <label nz-checkbox nzValue="pupillometer">{{
+                "asmo.filter.reason.pupillometer" | translate
+              }}</label>
+              <label nz-checkbox nzValue="pulseMax">{{
+                "asmo.filter.reason.highpulse" | translate
+              }}</label>
+              <label nz-checkbox nzValue="pulseMin">{{
+                "asmo.filter.reason.lowpulse" | translate
+              }}</label>
+              <label nz-checkbox nzValue="pulseMin">{{
+                "asmo.filter.reason.employeeDiagnosis" | translate
+              }}</label>
+            </div>
+          </div>
+        </nz-checkbox-wrapper>
+      </div>
+    </div>
+  </ng-container>
+  <div *nzModalFooter>
+    <button nz-button nzType="default" (click)="handleReset()">
+      {{ "asmo.filter.reset" | translate }}
+    </button>
+    <button nz-button nzType="primary" (click)="handleSubmit()">
+      {{ "asmo.filter.submit" | translate }}
+    </button>
+  </div>
+</nz-modal>

@@ -1,0 +1,19 @@
+<div
+  style="width: 190px; marign: auto; text-align: center"
+  class="status"
+  [class.success]="status === 'SUCCESS'"
+  [class.danger]="status === 'FAIL'"
+  [class.retake]="status === 'RETAKE'"
+  [class.neutral]="status === 'CANCEL'"
+>
+  <div *ngIf="status === 'SUCCESS'">
+    {{ "asmo.pmo.status.success" | translate }}
+  </div>
+  <div *ngIf="status === 'FAIL'">{{ "asmo.pmo.status.fail" | translate }}</div>
+  <div *ngIf="status === 'RETAKE'">
+    {{ "asmo.pmo.status.retake" | translate }}
+  </div>
+  <div *ngIf="status === 'CANCEL'">
+    {{ "asmo.pmo.status.cancel" | translate }}
+  </div>
+</div>

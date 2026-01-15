@@ -1,0 +1,91 @@
+<nz-modal
+  [(nzVisible)]="visible"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+  nzWidth="800px"
+>
+  <ng-template [nzModalTitle]> {{ "asmo.pmo.title" | translate }}</ng-template>
+  <ng-container *nzModalContent>
+    <div nz-row style="margin-bottom: 40px">
+      <div nz-col nzSpan="12">
+        <app-profile-info [selected]="selected"></app-profile-info>
+      </div>
+      <div
+        nz-col
+        nzSpan="12"
+        nz-flex
+        nzFlex="1 1 200px"
+        [nzJustify]="'flex-end'"
+        [nzAlign]="'center'"
+      >
+        <app-status [status]="selected.status"></app-status>
+      </div>
+    </div>
+    <div nz-row>
+      <div class="content-info">
+        <span class="left">{{ "asmo.pmo.date" | translate }}</span>
+        <span class="right">{{ getSelectedCreatedAt() || "" }}</span>
+      </div>
+
+      <div class="content-info">
+        <span class="left">{{ "asmo.pmo.temperature" | translate }}</span>
+        <span class="right">
+          {{ getSelectedResult("temperature") }}
+        </span>
+      </div>
+    </div>
+
+    <div nz-row>
+      <div class="content-info">
+        <span class="left">{{ "asmo.pmo.complaints" | translate }}</span>
+        <span class="right">
+          {{ getSelectedResult("complaints") }}
+        </span>
+      </div>
+
+      <div class="content-info">
+        <span class="left">{{ "asmo.pmo.alco" | translate }}</span>
+        <span class="right">
+          {{ getSelectedResult("alco") }}
+        </span>
+      </div>
+    </div>
+
+    <div nz-row>
+      <div class="content-info">
+        <span class="left">{{ "asmo.pmo.pressure" | translate }}</span>
+        <span class="right">
+          {{ getSelectedResult("pressure") }}
+        </span>
+      </div>
+
+      <div class="content-info">
+        <span class="left">{{ "asmo.pmo.visual" | translate }}</span>
+        <span class="right">
+          {{ getSelectedResult("visual") }}
+        </span>
+      </div>
+    </div>
+
+    <div nz-row>
+      <div class="content-info">
+        <span class="left">{{ "asmo.pmo.pulse" | translate }}</span>
+        <span class="right">
+          {{ getSelectedResult("pulse") }}
+        </span>
+      </div>
+
+      <div class="content-info">
+        <span class="left">{{ "asmo.pmo.nurse" | translate }}</span>
+        <span class="right">
+          {{ getSelectedResult("visual") }}
+        </span>
+      </div>
+    </div>
+  </ng-container>
+  <div *nzModalFooter>
+    <button nz-button nzType="primary" (click)="handleCancel()">
+      {{ "asmo.pmo.enter" | translate }}
+    </button>
+  </div>
+</nz-modal>
